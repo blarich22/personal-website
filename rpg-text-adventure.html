@@ -1,0 +1,77 @@
+        <!-- rpg-text adventure -->
+        <!-- 11/29: finished implementing function to transition to diff pgs -->
+
+        <style> div {display: none;} </style>
+
+
+        <br>
+
+        <h2>Chapter 1: Up and At 'Em</h2>
+
+        <div class="Option 0" style = "display: block;">
+            <p> He arises in the morning. The darkness of the dawn sits on him like an 
+                invisible image. Meditating into the abyss, he thinks a quick prayer - that the computer won't
+                crash today, that the lesson will make sense. Okay, what to do next...
+                <br> </br>
+                In front of him are three objects from last evening's festivities: 
+                a phone hanging on the foot of bed opened to an e-book, an actual book, and...a toothbrush? 
+                Which one does he take?
+            </p>
+        
+            <p class = "Option" id="1"> quick browsing</p>
+            <p class = "Option" id="2"> games</p>
+            <p class = "Option" id="3"> email-checking</p>
+        </div>
+
+        <div class="Option 1">
+            <p> paragraph text for option 1</p>
+            <p id="11"> options 1</p>
+            <p id ="12"> options 2</p>
+            </div>
+
+        <div class="Option 2">
+                <p> paragraph text2 for option 2</p>
+                <p> options 1</p>
+                <p> options 2</p>
+            </div> 
+
+
+        <button onclick="getElementByClass('Option') ">Show hidden content</button>
+
+        <script> 
+
+        var node = 0; //Which node are you on
+        var clicks = 0; //control how many clicks are registered in console
+
+        var x = document.getElementsByClassName('Option');
+        x = Array.from(x);
+
+        console.log("what is the content of the first <p>: ", x[0].innerHTML);
+        x.forEach((element, index) => element.addEventListener("click", changePage));
+
+        function changePage(event) {
+            
+            if (clicks < 1) {
+                clicks++;
+
+        var currentChapter = document.getElementsByClassName('Option ' + node)[0];
+        node =event.target.id;  //chosen node
+        var newChapter = document.getElementsByClassName("Option " + node)[0];
+
+        console.log('chpse npode', node+"");
+        console.log('current chapter: ', currentChapter.className+"");
+        console.log('current chapter: ', newChapter.className+"");
+
+        currentChapter.style.display = "none";
+        newChapter.style.display = "block";
+            }
+
+        };
+
+        clicks--;
+
+
+
+
+
+        </script>
