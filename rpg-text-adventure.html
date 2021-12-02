@@ -1,309 +1,400 @@
-        <!-- rpg-text adventure -->
-        <!-- 11/29: finished implementing function to transition to diff pgs -->
-        <!-- 11/30: 6-8am: created ideas for funcions to update each stat -->
-        <!-- 11/30: 8:30-50am: implemented and tested; working! -->
-        <!-- 11/30: 50-9:00pm: added more text and options (untested) -->
-        <!--11/30: (9:45-10:20am) found error with array and other bugs, fixed -->
-        <!-- 11/30: 10:20-30 fixed bugs, allowing option 2 and 3 to work -->
-        <!-- 11/30: 5:05-5:30am: addd more texts and options, not yet tested -->
-        <!-- 12/1: added more texts and options -> quite a few bugs to fix -->
-        <!-- 12/1: 12:50-1:20PM: Debugged/added text; need to update the stats -->
-        
-        <style> div {display: none;} p {margin-right:72%; border: 20px;} </style>
+    <!-- rpg-text adventure -->
+    <!-- 11/29: finished implementing function to transition to diff pgs -->
+    <!-- 11/30: 6-8am: created ideas for funcions to update each stat -->
+    <!-- 11/30: 8:30-50am: implemented and tested; working! -->
+    <!-- 11/30: 50-9:00pm: added more text and options (untested) -->
+    <!--11/30: (9:45-10:20am) found error with array and other bugs, fixed -->
+    <!-- 11/30: 10:20-30 fixed bugs, allowing option 2 and 3 to work -->
+    <!-- 11/30: 5:05-5:30am: addd more texts and options, not yet tested -->
+    <!-- 12/1: added more texts and options -> quite a few bugs to fix -->
+    <!-- 12/1: 12:50-1:20PM: Debugged/added text; need to update the stats -->
+    <!-- 12/1: 1:00-30: added text for 1311 and 1312; need to test! -->
+    <!-- 12/1: 3:020 -> finished adding all text; need to link all -->
+    <!-- 12/1: 4:15 -> started to find and fix bugs with stats; -->
+    <style> div {display: none;} p {margin-right:72%; border: 20px;} </style>
 
-        <br>
+    <br>
 
-        <h2>Chapter 1: Up and At 'Em</h2>
+    <h2>Chapter 1: Up and At 'Em</h2>
 
-        <table class="stats">
-            <tr>
-                <th> vocational productivity </th> 
-                <th id="productivity_value"> 0 </th>
+    <table class="stats">
+        <tr>
+            <th> vocational productivity </th> 
+            <th id="productivity_value"> 0 </th>
+        </tr>
+        <tr>
+            <th> health </th> 
+            <th id="health_value"> 0 </th>
+        </tr> <tr>
+            <th> knowledge </th> 
+            <th id="knowledge_value"> 0 </th>
+        </tr>
+        <tr>
+            <th> cleanliness </th> 
+            <th id="cleanliness_value"> 0 </th>
             </tr>
             <tr>
-                <th> health </th> 
-                <th id="health_value"> 0 </th>
-            </tr> <tr>
-                <th> knowledge </th> 
-                <th id="knowledge_value"> 0 </th>
+            <th> good mood </th> 
+            <th id="good_mood_value"> 0 </th>
             </tr>
-            <tr>
-                <th> cleanliness </th> 
-                <th id="cleanliness_value"> 0 </th>
-             </tr>
-             <tr>
-                <th> good mood </th> 
-                <th id="good_mood_value"> 0 </th>
-             </tr>
-        </table>
+    </table>
 
-        <div class="Option_0" style = "display: block;">
-            <p> He arises in the morning. The darkness of the dawn sits on him like an 
-                invisible image. Meditating into the abyss, he thinks a quick prayer - that the computer won't
-                crash today, that the lesson will make sense. Okay, what to do next...
-                <br> </br>
-                In front of him are three objects from last evening's festivities: 
-                a phone hanging on the foot of bed opened to an e-book, an actual book, and...a toothbrush? 
-                Which one does he take? <br> <br>
-                he decides to pick up his (click)
+    <div class="Option_0" style = "display: block;">
+        <p> He arises in the morning. The darkness of the dawn sits on him like an 
+            invisible image. Meditating into the abyss, he thinks a quick prayer - that the computer won't
+            crash today, that the lesson will make sense. Okay, what to do next...
+            <br> </br>
+            In front of him are three objects from last evening's festivities: 
+            a phone hanging on the foot of bed opened to an e-book, an actual book, and...a toothbrush? 
+            Which one does he take? <br> <br>
+            he decides to pick up his (click)
+        </p>
+    
+        <button class = "Option" id="1">  phone</button>
+        <button class = "Option" id="2">  book</button>
+        <button class = "Option" id="3">  toothbrush</button>
+    </div>
+
+    <div class="Option_1">
+        <p> a green neon light catches his eyes - 6:49am. That leaves
+            about 11 minutes to do some quick browsing, gaming, or email-checking. After,
+            it's time to hit the office -- the desk adjacent to his bed with a computer. 
+            <br><br>
+            -1pt laboral productivity; -1 health (no brushing)
+            <br></br>
+
+            Which option does he take?
             </p>
-        
-            <button class = "Option" id="1">  phone</button>
-            <button class = "Option" id="2">  book</button>
-            <button class = "Option" id="3">  toothbrush</button>
-        </div>
+        <button id="11"> quick browsing</button>
+        <button id ="12"> games</button>
+        <button id ="13"> email-checking</button>
+    </div>
 
-        <div class="Option_1">
-            <p> a green neon light catches his eyes - 6:49am. That leaves
-                about 11 minutes to do some quick browsing, gaming, or email-checking. After,
-                it's time to hit the office -- the desk adjacent to his bed with a computer. 
-                <br><br>
-                -1pt laboral productivity
-                <br></br>
+    <div class="Option_2">
+            <p> it's way to dark to be reading! He picks up the heavy tome - all 500 pages of 100
+                Years of Solitude, and sets it upon the adjacent desk. There, one less crowding 
+                object in the way of getting up.
+                <br> </br>
+                -1pt laboral producitivity; <br> +1pt cleanliness <br> -1 health (no brushing)
+                <br> <br>
+                now what? <br>
+            
+            <button  id="21"> brush teeth</button>
+            <button  id="22"> play game</button>
+    </div> 
+    
+    <div class="Option_3">
 
-                Which option does he take?
-                </p>
-            <button id="11"> quick browsing</button>
-            <button id ="12"> games</button>
-            <button id ="13"> email-checking</button>
-        </div>
+        <p> +1pt laboral productivity; <br>-1 health (no brushing)</p>
 
-        <div class="Option_2">
-                <p> it's way to dark to be reading! He picks up the heavy tome - all 500 pages of 100
-                    Years of Solitude, and sets it upon the adjacent desk. There, one less crowding 
-                    object in the way of getting up.
-                    <br> </br>
-                    -1pt laboral producitivity; <br> +1pt cleanliness <br> -1 health (no brushing)
-                    <br> <br>
-                    now what? <br>
+        <p> Right, who wants stay in the admittedly inviting,
+                yet much too alluring confines of one's bed all
+                day. It's time to do the thing
                 
-                <button  id="21"> brush teeth</button>
-                <button  id="22"> play game</button>
-        </div> 
-        
-        <div class="Option_3">
+                <br> <br>
+                now what? <br><br>
+            
+            <button  id="31"> brush teeth</button>
+    </div> 
 
-           <p> +1pt laboral productivity; <br>-1 health (no brushing)</p>
+    <div class="Option_11">
 
-            <p> Right, who wants stay in the admittedly inviting,
-                    yet much too alluring confines of one's bed all
-                   day. It's time to do the thing
-                   
+        <p>  +1 good mood </p> 
+
+            <p>
+
+            The internet wasn't used all day on Sunday! Plus, how can he resist checking up on my friend's vacay to the islands?  he browses through "friendbook" looking for the post. A notification about an emergency flooding comes up. Ughh..what to do here?
+
+                
                     <br> <br>
                     now what? <br><br>
                 
-                <button  id="31"> brush teeth</button>
+                <button  id="111">Keep browsing for photos?</button>
+                <button  id="112">Check for potential flooding areas in my room?</button>
         </div> 
 
-        <div class="Option_11">
+        <div class="Option_12 Option_22">
 
-            <p>  +1 good mood </p> 
- 
-             <p>
+        <p>  +0.5 good mood; </p> 
 
-                The internet wasn't used all day on Sunday! Plus, how can he resist checking up on my friend's vacay to the islands?  he browses through "friendbook" looking for the post. A notification about an emergency flooding comes up. Ughh..what to do here?
+            <p>
 
-                    
-                     <br> <br>
-                     now what? <br><br>
-                 
-                 <button  id="111">Keep browsing for photos?</button>
-                 <button  id="112">Check for potential flooding areas in my room?</button>
-         </div> 
+            Great ideas. Let's see. Wait…..Games - for like 10 minutes? Hmm, unless one wants to lose at rapid chess, perhaps this is not right. But maybe he can make some progress on that text-based rpg….
 
-         <div class="Option_12 Option_22">
-
-            <p>  +1 good mood; -1 laboral productivity </p> 
- 
-             <p>
-
-                Great ideas. Let's see. Wait…..Games - for like 10 minutes? Hmm, unless one wants to lose at rapid chess, perhaps this is not right. But maybe he can make some progress on that text-based rpg….
-
+            
                 
-                    
-                     <br> <br>
-                     now what? <br><br>
-                 
-                 <button id="121"> play the rpg </button>
-         </div> 
-
-         <div class="Option_13">
-
-            <p>  +1 laboral productivity </p> <br><br>
- 
-             <p>
-
-                Let's check emails, hobby of the busy people. He opens his Dmail and scans the first three sections: a coupon , an ad for books, and...an email...from an unknown name -- A recruiter? An acquaintance? Which does he open?
+                    <br> <br>
+                    now what? <br><br>
                 
-                    
-                     <br> <br>
-                     now what? <br><br>
-                 
-                 <button  id="131"> the coupon, discounts are useful</button>
-                 <button id= "132"> the ad for new books</button>
-                 <button id="133">the other email from the person</button>
+                <button id="121"> play the rpg </button>
+        </div> 
 
-         </div> 
+        <div class="Option_13">
+
+        <p>  +1 laboral productivity; -1 health </p> 
+
+            <p>
+
+            Let's check emails, hobby of the busy people. He opens his Dmail and scans the first three sections: a coupon , an ad for books, and...an email...from an unknown name -- A recruiter? An acquaintance? Which does he open?
+            
+                
+                    <br> <br>
+                    now what? <br><br>
+                
+                <button  id="131"> the coupon, discounts are useful</button>
+                <button id= "132"> the ad for new books</button>
+                <button id="133">the other email from the person</button>
+
+        </div> 
 
 
-  
-         <div class="Option_21 Option_31">
-                     <p>
+
+        <div class="Option_21 Option_31">
+                    <p>
 There's way too many obstacles, between the messy room and crowded hallway leading to the bathroom. No maneuver will avoid the annoying high-pitch frequency bound to awaken all.                        
-                             <br> <br>
-                             now what? <br><br>
-                         
-                         <button  id="131"> Just get up and move anyway as to not waste more time</button>
-                         <button id= "132"> Slowly, step by step, remove each obstacle</button>
-                         <button id="133">Too much! Maybe sleeping in is the thing to do...</button>
-        
-                 </div> 
-          
-       
-        <div class="Option_111 Option_1121">
-                    <p>
-                        After 7 minutes of scrolling (6 spent staring at a dog post) He finds the photo. His friend stands.on the mount of sand. Unlike here, the sky is resplendent, the sand orange and warm. Wow, it's a must to go and...who is that beside him???
-
-                        <br></br>knowledge +1; laboral productivity -0.5;<br>
-               
                             <br> <br>
                             now what? <br><br>
                         
-                        <button  id="1111"> okay, enough drooling over the setting (and girl), it's time to work</button>
-       
+                        <button  id="211"> Just get up and move anyway as to not waste more time</button>
+                        <button id= "212"> Slowly, step by step, remove each obstacle</button>
+                        <button id="213">Too much! Maybe sleeping in is the thing to do...</button>
+    
                 </div> 
-
         
-        <div class="Option_112">
-                    <p>
-                        Quick check. The winds howl loudly; not even the whirring cars can compete. Anyway, the windows are shut, so it's okay.
+    
+    <div class="Option_111 Option_1121">
+                <p>
+                    After 7 minutes of scrolling (6 spent staring at a dog post) He finds the photo. His friend stands.on the mount of sand. Unlike here, the sky is resplendent, the sand orange and warm. Wow, it's a must to go and...who is that beside him???
+
+                    <br></br>knowledge +1; laboral productivity -0.5;<br>
+            
+                        <br> <br>
+                        now what? <br><br>
+                    
+                    <button  id="1111"> Investigate later, but now, it's time to work</button>
+    
+            </div> 
+
+    
+    <div class="Option_112">
+                <p>
+                    Quick check. The winds howl loudly; not even the whirring cars can compete. Anyway, the windows are shut, so it's okay.
 
 
-                        <br></br>good mood +1<br>
-               
-                            <br> <br>
-                            now what? <br><br>
-                        
-                        <button  id="1121"> keep browsing</button>
-       
-                </div> 
+                    <br></br>good mood +1<br>
+            
+                        <br> <br>
+                        now what? <br><br>
+                    
+                    <button  id="1121"> keep browsing</button>
+    
+            </div> 
+    
 
-        <div class="Option_11111">
-                    <p>
-                        good mood +1 <br><br>
+    <div class="Option_131">
+                <p>
+                   
+It’s a coupon: 3 for $10 off the local pizza store. Pizza isn’t very desirable these days. Maybe forward it to a sibling/friend
+
+<p><br>+0.5 knowledge</p>
+
+<button id="1311">Open email with ad for books</button>
+<button id="1312">Open email with the unknown name</button>
+<button id="1313">Get to work now?</button> 
+        
+    </div>
+    
+    <div class="Option_132">
+        <p>
+            The e-book or the book on the bed hasn’t been fully read; it’s not necessary to utilize - to buy MORE. He bookmarks it on email. That was kind of...a waste?
+
+            <br></br>-0.5 good mood <br>
+            
+            <button id="1321"> Open email with the unknown name </p>button>
+            <button id="1322"> Open email with coupon (hide if chosen once) </button>
+            <button id="1323">Get to work now?</button> 
+
+    </div> 
+
+    <div class="Option_133">
+        <p>
+            
+        Mara Klopins.
+
+        Not sure who it is. The email contains information about an opportunity to visit the Bahamas for discount price. At the bottom of the long blurb is a name: Peter Smith. It does match the name on top: it's likely spam. 
+
+        -0.5 good mood;
+
+        <button id="1331">Open other two emails (if not opened)</button>
+        <button id="1332"> Get to work now?</button>
+
+    </div> 
+
+    <div class="Option_211 Option_212">
+
+        <br>+1 health<br>
+
+        <p>
+            He arcs his spine, posed to launch off the bed. He looks towards the door with a determined, focused look. A droplet lands on the window. A quizzical look dominates his expression. Okay, that was nothing...drip, drip. it's going to rain, the noise will keep everyone asleep so no worries about waking people.
+
+           </p>
+
+        <br>
+
+<button id="2111">you finally go and brush and return</button>
+
+
+</div>
+
+<div class="Option_132">
+<p>
+    Eyes closed and mind shuts off. A soothing breeze reaches his ears. A soft rain begins to lull him deeper into sleep. Heat generated from both body and blanket further relaxes the senses. Ahh, this is….nice...but...should not he...get up soon and do the routine. With one panicky thought, He blinks his eyes and arises up from bed. Sleep is great, but can be most alluring during that time.between morning and dawn, right before other duties might be  calling. 
+
+    
+
+    <br>+2 good mood.<br>
+    
+    <button id="1321"> time to work! </p>button>
+  
+
+</div> 
+
+<div class="Option_133">
+<p>
+    
+Mara Klopins.
+
+Not sure who it is. The email contains information about an opportunity to visit the Bahamas for discount price. At the bottom of the long blurb is a name: Peter Smith. It does match the name on top: it's likely spam. 
+
+-0.5 good mood;
+
+<button id="1331">Open other two emails (if not opened)</button>
+<button id="1332"> Get to work now?</button>
+
+</div> 
+
+    <div class="Option_121 Option_1111 Option_1321 Option_1332 Option_1313 Option_1323 Option_2111">
+                <p>
+                    good mood +1 <br><br>
 
 
 Ah..feels good to have gotten something done, but now it's 7pm. Perhaps it's time to get to work.
 He uses that skillful maneuver, only known to accustomed to working at home - he slides from bed over to his computer chair without touching the floor, rubs his eyes, and jabs the spacebar. Okay, let's see what to prioritize for today.
 
-               
-                            <br> <br>
-                            now what? <br><br>
-                        
-                        <button"> replay chapter 1? (to be implemented)</button>
-       
-                </div> 
+            
+                        <br> <br>
+                        now what? <br><br>
+                    
+                    <button"> replay chapter 1? (to be implemented)</button>
+    
+            </div> 
 
 
 
-        <script> 
+    <script> 
 
-        var node = 0; //Which node are you on ()
-        var howPointValuesChangeEveryNode = [
-            ['- 1 productivity_value',2,12],
-            ['- 0.5 productivity_value', 111],
-            ['+ 1 productivity_value',3,13],
-            ['- 1 health_value', 2, 3],
-            ['+ 1 good_mood_value', 11,1],
-            ['+ 1 knowledge_value', 111,1121],
-            ['+ 1 cleanliness_value', 2]];
- 
+    var node = 0; //Which node/option are you on ()
+    var howPointValuesChangeEveryNode = [
+        ['- 1 productivity_value',1,2],
+        ['- 0.5 productivity_value', 111],
+        ['+ 1 productivity_value',3,13],
+        ['+ 1 health_value', 211],
+        ['- 1 health_value', 1, 2, 13],
+        ['+ 0.5 good_mood_value',12],
+        ['+ 1 good_mood_value', 11,121],
+        ['+ 2 good_mood_value', 132],
+        ['- 0.5 good_mood_value', 132,133],
+        ['+ 1 knowledge_value', 111,1121],
+        ['+ 0.5 knowledge_value', 131],
+        ['+ 1 cleanliness_value', 2]];
+
+    
+    //set a listener on all "option" classes
+    var x = document.getElementsByClassName('Option'); //use button instead
+    x = document.querySelectorAll("button"); //all buttons for now, have attr
+    x = Array.from(x);
+    x.forEach((element, index) => element.addEventListener("click", changePage));
+
+    
+    //UPDATE PAGE FUNCTION: Change text and update points upon clicking option
+    function changePage(event) {
+
+        //update text
+        var currentChapter = document.getElementsByClassName('Option_' + node)[0];
+        node = parseInt(event.target.id);  //get new node from your "selection"
+        console.log(node);
+        var newChapter = document.getElementsByClassName("Option_" + node)[0];
+
         
-        //set a listener on all "option" classes
-        var x = document.getElementsByClassName('Option'); //use button instead
-        x = document.querySelectorAll("button"); //all buttons for now, have attr
-        x = Array.from(x);
-        x.forEach((element, index) => element.addEventListener("click", changePage));
+        console.log('current chapter: ', currentChapter.className+"");
+        console.log('NEw chapter: ', newChapter.className+"");
 
-       
-        //UPDATE PAGE FUNCTION: Change text and update points upon clicking option
-        function changePage(event) {
+        currentChapter.style.display = "none";
+        newChapter.style.display = "block";
 
-       
+        //hide options already chosen\
 
-            var currentChapter = document.getElementsByClassName('Option_' + node)[0];
-            node = parseInt(event.target.id);  //get new node from your "selection"
-            console.log(node);
-            var newChapter = document.getElementsByClassName("Option_" + node)[0];
+        //update stats
+        calculatePoints(node);
+    };
+
+
+    //STAT UPDATING HELPER FUNCTIONS
+
+    //when the page changes, all point values should be adjusted here
+    function calculatePoints(Node) {
+
+        //get list of each value to be update for current chapter
+        var listOfValues = getValueChangesForNode(Node);
+
+        //update each value with this function
+        listOfValues.forEach(value => changeCurrentPointValue(value))
+
+
+
+
+    }
+    //look at the value table created above, get those value into array
+    //update, return an array of changes
+    function getValueChangesForNode(node) {
+
+        var arrayOfChangeableValues = []; //list of values to be changed
+        howPointValuesChangeEveryNode.forEach((row, col) => {
 
             
-            console.log('current chapter: ', currentChapter.className+"");
-            console.log('NEw chapter: ', newChapter.className+"");
 
-            currentChapter.style.display = "none";
-            newChapter.style.display = "block";
+                if (row.includes(node) === true) { 
+                    var valueToBeChanged = row[0];
+                    console.log("value to be changed: ", valueToBeChanged+"");
+                    //for every row in which node is found, change value
+                    arrayOfChangeableValues.push(valueToBeChanged); 
+                }
+        });
 
-            //update stats
-            calculatePoints(node);
-        };
+        return arrayOfChangeableValues;
+    }
+
+    //update the stats seen on top of the screen
+    function changeCurrentPointValue(valueToBeChanged) {
+        //parse into the sign, number, and value
+        //i.e. parsedArray[0] = - (minus), parseArray[1] = 2 (points),
+        // parsedArray[2] = productivity (value)
+        var parsedArray = valueToBeChanged.split(" ");
+        console.log("parsearrayed", parsedArray);
+        //give element a variable for convenience
+        var elementOfValue = document.getElementById('' + parsedArray[2])
+        var number = parseFloat(parsedArray[1]);
+        var sign = parsedArray[0];
+        
+        //get value string, converting to int, update, and turn back
+
+        var value = parseFloat(elementOfValue.innerHTML); //value as int
+        if (sign === "-") {value-=number;} else {value+=number};
+        console.log(value);
+
+        elementOfValue.innerHTML = ""+value; //update value into stirng form
+        } 
 
 
-        //STAT UPDATING HELPER FUNCTIONS
-
-        //when the page changes, all point values should be adjusted here
-        function calculatePoints(Node) {
-
-            //get list of each value to be update for current chapter
-            var listOfValues = getValueChangesForNode(Node);
-
-            //update each value with this function
-            listOfValues.forEach(value => changeCurrentPointValue(value))
-
-
-
-
-        }
-        //look at the value table created above, get those value into array
-        //update, return an array of changes
-        function getValueChangesForNode(node) {
-
-            var arrayOfChangeableValues = []; //list of values to be changed
-            howPointValuesChangeEveryNode.forEach((row, col) => {
-
-                
     
-                   if (row.includes(node) === true) { 
-                        var valueToBeChanged = row[0];
-                        console.log("value to be changed: ", valueToBeChanged+"");
-                        //for every row in which node is found, change value
-                        arrayOfChangeableValues.push(valueToBeChanged); 
-                    }
-            });
-
-            return arrayOfChangeableValues;
-        }
-
-        //update the stats seen on top of the screen
-        function changeCurrentPointValue(valueToBeChanged) {
-            //parse into the sign, number, and value
-            //i.e. parsedArray[0] = - (minus), parseArray[1] = 2 (points),
-            // parsedArray[2] = productivity (value)
-            var parsedArray = valueToBeChanged.split(" ");
-            console.log("parsearrayed", parsedArray);
-            //give element a variable for convenience
-            var elementOfValue = document.getElementById('' + parsedArray[2])
-            var number = parseFloat(parsedArray[1]);
-            var sign = parsedArray[0];
-            
-            //get value string, converting to int, update, and turn back
-
-            var value = parseFloat(elementOfValue.innerHTML); //value as int
-            if (sign === "-") {value-=number;} else {value+=number};
-            console.log(value);
-
-            elementOfValue.innerHTML = ""+value; //update value into stirng form
-            } 
-    
-
-       
-        </script>
+    </script>
