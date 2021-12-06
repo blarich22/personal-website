@@ -1,3 +1,4 @@
+<!doctype html>
     <!-- rpg-text adventure -->
     <!-- 11/29: finished implementing function to transition to diff pgs -->
     <!-- 11/30: 6-8am: created ideas for funcions to update each stat -->
@@ -11,12 +12,9 @@
     <!-- 12/1: 1:00-30: added text for 1311 and 1312; need to test! -->
     <!-- 12/1: 3:020 -> finished adding all text; need to link all -->
     <!-- 12/1: 4:15 -> started to find and fix bugs with stats; -->
-    <style> div {display: none;} p {margin-right:72%; border: 20px;} 
-  @media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
-</style>
+    <!-- 12/3: am mostly finished for review; still need to update stats/text later -->
+    <style> div {display: none;} p {margin-right:60%; border: 20px; font-size: 12pt;} 
+    th {font-size: 10pt;} </style>
 
     <br>
 
@@ -136,7 +134,7 @@
 
         <div class="Option_13">
 
-        <p>  +1 laboral productivity; -1 health </p> 
+        <p>  +1 laboral productivity;</p> 
 
             <p>
 
@@ -217,7 +215,7 @@ It’s a coupon: 3 for $10 off the local pizza store. Pizza isn’t very desirab
             
             <button id="1321"> Open email with the unknown name </p>button>
             <button id="1322"> Open email with coupon (hide if chosen once) </button>
-            <button id="1323">Get to work now?</button> 
+            <button id="1323"> Get to work now?</button> 
 
     </div> 
 
@@ -304,8 +302,8 @@ He uses that skillful maneuver, only known to accustomed to working at home - he
         ['- 0.5 productivity_value', 111],
         ['+ 1 productivity_value',3,13],
         ['+ 1 health_value', 211],
-        ['- 1 health_value', 1, 2, 13],
-        ['+ 0.5 good_mood_value',12],
+        ['- 1 health_value', 1, 2],
+        ['+ 0.5 good_mood_value',12,22],
         ['+ 1 good_mood_value', 11,121],
         ['+ 2 good_mood_value', 132],
         ['- 0.5 good_mood_value', 132,133],
