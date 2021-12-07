@@ -1,1 +1,1 @@
-An rpg game 2021
+My latest projects, blog posts, and more
