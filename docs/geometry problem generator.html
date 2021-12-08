@@ -1,0 +1,57 @@
+<body>
+
+<h1>My first SVG</h1>
+
+<svg width="100" height="100">
+  <circle cx="50" cy="50" stroke="green" stroke-width="4" fill="yellow" />
+  <line id = "line1" style="stroke:rgb(255,0,0);stroke-width:2" />
+  <line id = "line2" style="stroke:rgb(255,0,0);stroke-width:2" />
+  </svg>
+</body>
+
+<script>
+    var radius = 40;
+
+
+    function getCoordinates(radius, cy, cx) { 
+
+    //for line 1
+    var xCoord = (80*Math.random())+10; //x must be such that -40 + 50 < x < 40 + 50
+
+    var y_minus_cy_squared = (Math.pow(radius, 2) - Math.pow(xCoord-cx,2));   
+    var y_minus_cy = Math.sqrt(y_minus_cy_squared)
+    Math.random() > 0.5 ? y_minus_cy : y_minus_cy = y_minus_cy*-1; //randomize if negative or not
+    yCoord = y_minus_cy + cy;
+
+    return [xCoord, yCoord];
+    }
+
+
+    function setCoordinates(line, circle) {
+      var radius = circle.getAttribute("radius");
+      var cy = circle.getAttribute("cy");  //center of y
+      var cx = circle.getAttribute("cx");
+
+      //get random x / y
+
+var coordinatePair = getCoordinates(radius, cy, cx);
+var coordinatePair2 = getCoordinates(radius, cy, cx);
+
+console.log(coordinatePair2);
+line.setAttribute("x1", coordinatePair[0]);
+line.setAttribute("y1", coordinatePair[1]);
+line.setAttribute("x2", coordinatePair2[0]);
+line.setAttribute("y2", coordinatePair2[1]);
+}
+
+
+    var svg = document.querySelector("svg");
+    var circle1 = svg.querySelector("circle");
+    var line1 = svg.getElementById("line1");
+    var line2 = svg.getElementById("line2");
+
+    circle1.setAttribute("r", radius);
+    setCoordinates(line1, 40, 50, 50);
+    setCoordinates(line2, 40, 50, 50);
+    console.log(line1, line2)
+</script>
