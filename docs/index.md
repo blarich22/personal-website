@@ -3,7 +3,8 @@
 TO PLAY MY LATEST GAME; GO HERE
 <a href="./rpg-text-adventure.html">Andrew Richards game<a>
   
-  CHECK OUT MY <a href"./geometry_problem_generator.html">_GEOMETRY PROBLEM GENERATOR_<a>
+CHECK OUT MY GEOMETRY PROBLEM MAKER, HERE:
+<a href="./geometry_problem_generator.html">generator<a>
   
   
   
