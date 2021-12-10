@@ -8,7 +8,7 @@ CHECK OUT MY GEOMETRY PROBLEM MAKER, HERE:
   
   
   
-This site is used to put down my projects/content
+This site is used to put down my projects/ various content
   
 It is under construction at the moment
 
