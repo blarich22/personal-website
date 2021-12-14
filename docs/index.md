@@ -5,14 +5,13 @@ TO PLAY MY LATEST GAME; GO HERE
   
 CHECK OUT MY GEOMETRY PROBLEM MAKER, HERE:
 <a href="./geometry_problem_generator.html">generator<a>
-  
-  
+
   
 This site is used to put down my projects/ various content
   
 It is under construction at the moment
 
-
+Other Projects: <a href="./my_first_game.html"> fsdfsdfs<a>
 
 ### Content 
 ```markdown
