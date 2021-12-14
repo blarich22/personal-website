@@ -1,0 +1,189 @@
+
+<!-- may not work on firefox -->
+
+<!-- 12/10 - started copying down code/brainstorming around 7 -->
+<!-- 12/11 - 9:30-10am; learned about keycodes and character codes -->
+<!-- 12/11 - 10-10:30am; spent thirty minutes debugging!!! :< -->
+<!-- 12/11 - 30-11:00am - more debugging and learning...      -->
+<!-- 12/11 - 12:00-30pm more playing around, but code move -->
+<!-- 12/11 - 12:30-1pm - more playing, but via keyboard, can move all ways      -->
+<!-- 12/13 - 8-8:30am - created a jump function  -->
+<!-- 12/13 - 8:45-9:15am - tested jump function not working -->
+<!-- 12/13 - 9:30-10 - jump is happening, but too quickly -->
+<!-- 12/13 - 10-10:30am - tried various jump models did not work -->
+<!-- 12/13 - 30-11am - realized issue with the keydown switch must fix -->
+<!-- 12/13 - 11:30-12pm - jump seems to work! -->
+<!-- 12/13 - 12-1230pm - missed log!!! -->
+<!-- 12/13 - ->1pm: need to test functions -->
+<!-- 12/13 - 5:30pm: have NOT logged various times :< but got jump+horizontal mvt working -->
+<!-- 12/14 - 6-630am: perfected jump+horizontal plans, making plans for stage, -->
+<!-- break!!!! -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+var protagonist;
+var jump;
+var speed;
+var power;
+
+
+function startGame() {
+  myGameArea.start();
+  protagonist = new character(30, 30, "red", 10, 120);
+}
+
+var myGameArea = {
+  canvas : document.createElement("canvas"), //here is the element canvas
+  start : function() { //takes the above canvas elt and adds attributes
+    this.canvas.width = 480;
+    this.canvas.height = 270;
+    this.context = this.canvas.getContext("2d");
+    this.context.fillRect(0,270,0,480);
+    this.fillStyle = "#FF0000"
+    document.body.insertBefore(this.canvas, document.body.childNodes[0]);//why?
+    this.interval = setInterval(updateGameArea, 25);
+  },
+  clear : function() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+} 
+
+function updateGameArea() {
+   myGameArea.clear();
+   protagonist.checkForMovement();
+   protagonist.redraw();
+   
+  
+
+}
+// new character!
+function character(width, height, color, x, y) {
+    //right 37, up 38 left 39 down 40 KEY code 
+
+  // window.addEventListener('keydown', function(event) {
+  //   if (event.key == 39) {this.x+=1;}});
+  // window.addEventListener('keyup', function (event) {
+  //   myGameArea.key = false;
+  //    });
+
+
+   //may not work on firefox -> https://www.w3schools.com/jsref/event_key_keycode.asp
+  
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;   
+    this.initialY = 0;
+    this.initialV = 20;
+    this.JumpAccel = 10.0/ 3.0;
+    this.JumpVeloc = 20;
+    this.jumpState = false;
+
+    this.currentDirection = [
+      ["left", false],
+      ["up", false],
+      ["right", false],
+      ["down", false]
+    ];
+    //add a state for jump
+    
+    this.setDir = function(dir, boolean) {
+    
+      this.currentDirection.forEach(elt => {
+        if (elt[0] === dir) {
+          elt[1] = boolean;
+         
+          return 1;
+        }
+      })
+    }
+  
+    this.redraw = function() {
+    this.ctx = myGameArea.context;
+    this.ctx.fillStyle = color;
+    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+     }
+
+     //move your character 
+     this.moveLeft = function() {this.x-=5;}
+     this.moveUp = function() {this.y-=5;}
+     this.moveRight = function() {this.x+=5;}
+     this.moveDown = function() {this.y+=5;}
+     
+    this.checkForMovement = function() {
+
+
+    //which key is pressed? set true or false, (to avoid multiple presses)
+      window.addEventListener('keydown', function(event) {
+    if (event.keyCode == 37) {protagonist.setDir("left", true);};
+    if (event.keyCode == 38) {protagonist.setDir("up", true);};
+    if (event.keyCode == 39) {protagonist.setDir("right", true);};
+    if (event.keyCode == 40) {protagonist.setDir("down", true);}; 
+
+
+    //jump if spacebar pressed - do nothing until jump has finised (avoid multiple presses)
+    if ((event.keyCode == 32) && (protagonist.jumpState == false))  {
+       protagonist.jumpState = true; protagonist.initialY = protagonist.y; 
+    }; 
+  })
+
+    window.addEventListener('keyup', function(event) {
+    if (event.keyCode == 37) {protagonist.setDir("left", false); };
+    if (event.keyCode == 38) {protagonist.setDir("up", false);};
+    if (event.keyCode == 39) {protagonist.setDir("right", false);};
+    if (event.keyCode == 40) {protagonist.setDir("down", false);};
+    })
+     
+    //What to do per state:
+
+
+    if (protagonist.jumpState == true) {
+      //update height
+      protagonist.y -= protagonist.JumpVeloc;
+      protagonist.JumpVeloc -= protagonist.JumpAccel;
+
+      //detect if simultaneusly going right
+  
+      if (protagonist.y >= protagonist.initialY) {
+       protagonist.jumpState = false;  
+       protagonist.y = protagonist.initialY;     
+       protagonist.JumpVeloc = protagonist.initialV; 
+      }     
+    }
+
+    if (protagonist.currentDirection[0][1] == true) {
+        protagonist.moveLeft();       
+       }
+
+       if (protagonist.currentDirection[1][1] == true) {
+        // protagonist.moveUp();       
+       }
+    
+       if (protagonist.currentDirection[2][1] == true) {
+        protagonist.moveRight();       
+       }
+
+       if (protagonist.currentDirection[3][1] == true) {
+        protagonist.moveDown();       
+       }
+     
+
+  
+
+
+
+
+    }
+  }
+
+
+startGame();
+
+
+</script>
+
+</body>
+</html>
