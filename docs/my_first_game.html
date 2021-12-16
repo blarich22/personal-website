@@ -18,22 +18,55 @@
 <!-- 12/13 - 5:30pm: have NOT logged various times :< but got jump+horizontal mvt working -->
 <!-- 12/14 - 6-630am: perfected jump+horizontal plans, making plans for stage, -->
 <!-- break!!!! -->
+<!-- 12/14/14 3:30-4pm: made stage, started building obstacls -->
+<!-- 12/14 3:30--pm: block collides with obstacle from left and right -->
+<!-- 12/14 4-4:30pm: implementing function that allows blocks to stand on objects -->
+<!-- 12/15 7:15-45am: block function partially works -->
+<!-- 12/15 9-9:30am: cleaned up the code so that there's an array for objects -->
+<!-- 12/15 30-10AM: cleaned up code so that I redraw in an array -->
+<!-- 12/15 10-1030am: too much debugging for a bracket error -->
+<!-- 12/15 1030-11am: changed colors, cleaned up, code works like two logs ago -->
+<!-- 11-1130 - thought of design for detecting vertical collisions -->
+<!-- 11:45-1230 - implemented it, finding an error with the function -->
+<!-- 110-140 - implemented jump function ,need to add gravity -->
+<!-- 140-210 - implemented a gravity variable and state, need to refine -->
+<!-- 3320 -4pm - gravity works -->
+<!-- 12/16 = 530-6pm - sketched a design for doing collisions -->
 <!DOCTYPE html>
 <html>
 <body>
 
 <script>
 
-var protagonist;
-var jump;
+var objects = {
+  protagonist : new character(30,30,"red",30,170),
+  obstacle1 : new character(15, 30, "brown", 200, 170),
+  landscape : new character(480, 270, "green", 0, 200)
+}
+
+var nonControllableObjects = {
+  obstacle1 : new character(15, 30, "brown", 200, 170),
+  landscape : new character(480, 270, "green", 0, 200)
+}
+
+// var objects = [
+//   { protagonist = new character(30,30,"red",30,170)},
+//   { obstacle1 = new character(15, 30, "red", 200, 170)},
+//   { landscape = (480, 280, "red", 0, 200)}
+// ]
+
+
+
+var jump; //for heights
 var speed;
-var power;
+var power; //for pushing
 
 
 function startGame() {
+
   myGameArea.start();
-  protagonist = new character(30, 30, "red", 10, 120);
 }
+  
 
 var myGameArea = {
   canvas : document.createElement("canvas"), //here is the element canvas
@@ -41,61 +74,70 @@ var myGameArea = {
     this.canvas.width = 480;
     this.canvas.height = 270;
     this.context = this.canvas.getContext("2d");
-    this.context.fillRect(0,270,0,480);
-    this.fillStyle = "#FF0000"
+    // this.fillStyle = "#000000" //need to fix
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);//why?
     this.interval = setInterval(updateGameArea, 25);
   },
-  clear : function() {
+  reset : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+ 
   }
 } 
 
 function updateGameArea() {
-   myGameArea.clear();
-   protagonist.checkForMovement();
-   protagonist.redraw();
-   
+   myGameArea.reset();
   
+   objects['protagonist'].animate();
+   
+   for (let ind in objects ) { //redraw all items
+    objects[ind].redraw();
+   }
 
 }
 // new character!
 function character(width, height, color, x, y) {
-    //right 37, up 38 left 39 down 40 KEY code 
-
-  // window.addEventListener('keydown', function(event) {
-  //   if (event.key == 39) {this.x+=1;}});
-  // window.addEventListener('keyup', function (event) {
-  //   myGameArea.key = false;
-  //    });
-
-
    //may not work on firefox -> https://www.w3schools.com/jsref/event_key_keycode.asp
-  
+
     this.width = width;
     this.height = height;
     this.x = x;
-    this.y = y;   
-    this.initialY = 0;
+    this.y = y;
+    
+    //for your protagonist, only!
+    this.initialY = this.y;
     this.initialV = 20;
-    this.JumpAccel = 10.0/ 3.0;
+    this.gravity = 10.0/ 3.0;
     this.JumpVeloc = 20;
     this.jumpState = false;
+    this.cx = (2*this.x+this.width)/2.0;
+    this.cy = (2*this.y+this.height)/2.0;
+    
 
-    this.currentDirection = [
+      //move your character 
+     this.moveLeft = function() {this.x-=5;}
+     this.moveUp = function() {this.y-=5;}
+     this.moveRight = function() {this.x+=5;}
+     this.moveDown = function() {this.y+=5;}
+
+    this.currentObjectState = [
       ["left", false],
       ["up", false],
       ["right", false],
-      ["down", false]
+      ["down", false],
+      ["jump", false],
+      ["collided", false]
     ];
     //add a state for jump
     
+    this.objectState = { 
+      right : false
+    };
+
     this.setDir = function(dir, boolean) {
-    
-      this.currentDirection.forEach(elt => {
+      this.currentObjectState.forEach(elt => {
         if (elt[0] === dir) {
           elt[1] = boolean;
-         
+        //  console.log(this.currentObjectState)
           return 1;
         }
       })
@@ -105,70 +147,121 @@ function character(width, height, color, x, y) {
     this.ctx = myGameArea.context;
     this.ctx.fillStyle = color;
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.cx = (2*this.x+this.width)/2.0;
+    this.cy = (2*this.y+this.height)/2.0;
      }
 
-     //move your character 
-     this.moveLeft = function() {this.x-=5;}
-     this.moveUp = function() {this.y-=5;}
-     this.moveRight = function() {this.x+=5;}
-     this.moveDown = function() {this.y+=5;}
      
-    this.checkForMovement = function() {
+     
+    this.animate = function() {
 
 
-    //which key is pressed? set true or false, (to avoid multiple presses)
+    //which key is pressed? set true or false
       window.addEventListener('keydown', function(event) {
-    if (event.keyCode == 37) {protagonist.setDir("left", true);};
-    if (event.keyCode == 38) {protagonist.setDir("up", true);};
-    if (event.keyCode == 39) {protagonist.setDir("right", true);};
-    if (event.keyCode == 40) {protagonist.setDir("down", true);}; 
+    if (event.keyCode == 37) {objects.protagonist.setDir("left", true);};
+    if (event.keyCode == 38) {objects.protagonist.setDir("up", true);};
+    if (event.keyCode == 39) {objects.protagonist.objectState.right = true};
+    if (event.keyCode == 40) {objects.protagonist.setDir("down", true);}; 
 
 
     //jump if spacebar pressed - do nothing until jump has finised (avoid multiple presses)
-    if ((event.keyCode == 32) && (protagonist.jumpState == false))  {
-       protagonist.jumpState = true; protagonist.initialY = protagonist.y; 
+    if ((event.keyCode == 32) && (objects.protagonist.jumpState == false))  {
+       objects.protagonist.jumpState = true; 
     }; 
   })
 
     window.addEventListener('keyup', function(event) {
-    if (event.keyCode == 37) {protagonist.setDir("left", false); };
-    if (event.keyCode == 38) {protagonist.setDir("up", false);};
-    if (event.keyCode == 39) {protagonist.setDir("right", false);};
-    if (event.keyCode == 40) {protagonist.setDir("down", false);};
+    if (event.keyCode == 37) {objects.protagonist.setDir("left", false); };
+    if (event.keyCode == 38) {objects.protagonist.setDir("up", false);};
+    if (event.keyCode == 39) {objects.protagonist.objectState.right = false};
+    if (event.keyCode == 40) {objects.protagonist.setDir("down", false);};
     })
      
-    //What to do per state:
-
-
-    if (protagonist.jumpState == true) {
-      //update height
-      protagonist.y -= protagonist.JumpVeloc;
-      protagonist.JumpVeloc -= protagonist.JumpAccel;
-
-      //detect if simultaneusly going right
-  
-      if (protagonist.y >= protagonist.initialY) {
-       protagonist.jumpState = false;  
-       protagonist.y = protagonist.initialY;     
-       protagonist.JumpVeloc = protagonist.initialV; 
-      }     
+     //update height
+    if (this.jumpState) {
+      this.y -= this.JumpVeloc;
+      this.JumpVeloc -= this.gravity;
     }
 
-    if (protagonist.currentDirection[0][1] == true) {
-        protagonist.moveLeft();       
+    //are you standing still?
+    this.fallingState = function() {
+
+    for (let i in objects ) {     
+      if ((Math.abs(this.cx - objects[i].cx) < ((objects[i].width+this.width)/2.0))
+       &&
+        ((this.y + this.height) >= objects[i].y)
+       && !(objects[i]==objects['protagonist'])
+       ) { // don't look at obj 1
+        return objects[i].y;
+      }
+    }
+   return true;
+}
+
+    //if not, you must be moving! 
+    if ((this.fallingState() == true)) {
+      this.y+= this.gravity;
+    } else {
+      this.JumpVeloc = 20;
+      this.y = this.fallingState() - this.height;
+      this.jumpState = false;
+    }
+  
+    //am i moving horizontally?
+    this.canMoveHorizontally = function() {
+    //where are you standing on/or are you falling?
+    for (let i in objects) {     
+      if ((Math.abs(this.cx - objects[i].cx) <= ((objects[i].width+this.width)/2.0)) 
+      &&
+        (Math.abs(this.cy - objects[i].cy) < ((objects[i].height+this.height)/2.0)) 
+      && !(objects[i]==objects['protagonist'])) { // don't look at obj 1
+        this.objectState.right = false;
+      }
+    }
+   return true;
+}
+
+  this.canMoveHorizontally()
+
+
+
+      // if ((this.x + this.width) == objects[i].x) {
+      //   if ((this.y + this.height) > objects[i].y) {
+      //      this.setDir("right", false);
+      //     }
+      //   };
+
+      // if (this.x == (objects[i].width + objects[i].x)) {
+      //   if ((this.y + this.height) > objects[i].y) {
+      //      this.setDir("left", false);
+      //     }
+      //   };
+
+      
+
+
+
+
+    if (this.currentObjectState[0][1] == true) {
+        this.moveLeft();       
        }
 
-       if (protagonist.currentDirection[1][1] == true) {
-        // protagonist.moveUp();       
+       if (this.currentObjectState[1][1] == true) {
+        // this.moveUp();       
        }
     
-       if (protagonist.currentDirection[2][1] == true) {
-        protagonist.moveRight();       
+       if (this.objectState.right) {
+        this.moveRight();       
        }
 
-       if (protagonist.currentDirection[3][1] == true) {
-        protagonist.moveDown();       
+       if (this.currentObjectState[3][1] == true) {
+        // this.moveDown();       
        }
+
+      }
+       
+        
+       
      
 
   
@@ -176,7 +269,7 @@ function character(width, height, color, x, y) {
 
 
 
-    }
+    
   }
 
 
