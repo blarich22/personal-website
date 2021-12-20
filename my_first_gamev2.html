@@ -1,0 +1,438 @@
+
+<!-- may not work on firefox -->
+
+<!-- 12/10 - started copying down code/brainstorming around 7 -->
+<!-- 12/11 - 9:30-10am; learned about keycodes and character codes -->
+<!-- 12/11 - 10-10:30am; spent thirty minutes debugging!!! :< -->
+<!-- 12/11 - 30-11:00am - more debugging and learning...      -->
+<!-- 12/11 - 12:00-30pm more playing around, but code move -->
+<!-- 12/11 - 12:30-1pm - more playing, but via keyboard, can move all ways      -->
+<!-- 12/13 - 8-8:30am - created a jump function  -->
+<!-- 12/13 - 8:45-9:15am - tested jump function not working -->
+<!-- 12/13 - 9:30-10 - jump is happening, but too quickly -->
+<!-- 12/13 - 10-10:30am - tried various jump models did not work -->
+<!-- 12/13 - 30-11am - realized issue with the keydown switch must fix -->
+<!-- 12/13 - 11:30-12pm - jump seems to work! -->
+<!-- 12/13 - 12-1230pm - missed log!!! -->
+<!-- 12/13 - ->1pm: need to test functions -->
+<!-- 12/13 - 5:30pm: have NOT logged various times :< but got jump+horizontal mvt working -->
+<!-- 12/14 - 6-630am: perfected jump+horizontal plans, making plans for stage, -->
+<!-- break!!!! -->
+<!-- 12/14/14 3:30-4pm: made stage, started building obstacls -->
+<!-- 12/14 3:30--pm: block collides with obstacle from left and right -->
+<!-- 12/14 4-4:30pm: implementing function that allows blocks to stand on objects -->
+<!-- 12/15 7:15-45am: block function partially works -->
+<!-- 12/15 9-9:30am: cleaned up the code so that there's an array for objects -->
+<!-- 12/15 30-10AM: cleaned up code so that I redraw in an array -->
+<!-- 12/15 10-1030am: too much debugging for a bracket error -->
+<!-- 12/15 1030-11am: changed colors, cleaned up, code works like two logs ago -->
+<!-- 11-1130 - thought of design for detecting vertical collisions -->
+<!-- 11:45-1230 - implemented it, finding an error with the function -->
+<!-- 110-140 - implemented jump function ,need to add gravity -->
+<!-- 140-210 - implemented a gravity variable and state, need to refine -->
+<!-- 3320 -4pm - gravity works -->
+<!-- 12/16 = 530-6pm - sketched a design for doing collisions -->
+<!-- 12/16 = 6-530 - got the block to collide with obstacles -->
+<!-- 12/16 = 630-7 - found a jump function bug need to fix! -->
+<!-- 12/16 - 8-847am - managed to make the restart! now, we have level 2 -->
+<!-- 12/16 - 9-930am - constructed text at bottom to guide player -->
+<!-- 12/16 - 11-130am - sketched and made rudimentary function to get "answers" -->
+<!-- 12/16 - 5-530pm - created an input box via html -->
+<!-- 12/16 - 5:40-610pm - created function to get answer -->
+<!-- 12/16 - 610-630; 7-730 - jump height now increases upon getting an answer correct -->
+<!-- 12/16 - 730-8pm - added more instructions, the game is close to done! -->
+<!-- 12/17 - 8-8:30am - beta tested for fun -->
+<!-- 12/17 - 8:30am-9am - made track 3 (outline), found problems -->
+<!-- 12/18 - 8:30-9am - fixed erro in code -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+  <p id="directions"></p>
+  <input type="text" onclick="generateText()"visibility="hidden" size="30"> type answer and press ENTER </input> 
+  <img>
+  
+<script>
+  var width = 600;
+  var height = 250;
+
+  direction = document.getElementById("directions");
+  input = document.querySelector("input");
+
+  var level;
+  
+
+objects = {
+  protagonist : new character(30,30,"red",30,170),
+  obstacle1 : new character(15, 30, "brown", 200, 170),
+  landscape : new character(width, 20, "green", 0, 200)
+}
+
+function generateText() {
+  if ((level == 3) && (click == false)) {
+    direction.innerHTML = "This is a test"
+  }
+}
+
+
+function upgradeSpeed() {
+  objects.protagonist.initialV+=13;
+}
+
+
+function startGame3() {
+
+
+level = 3;
+
+  objects = {
+  protagonist : new character(30,30,"red",30,170),
+  obstacle1 : new character(30, 30, "brown", 100, 170),
+  obstacle2 : new character(30, 60, "brown", 115, 140),
+  obstacle3 : new character(120, 120, "brown", 130,  100),
+  obstacle4 : new character(60, 30, "brown", 300, 190),
+  obstacle5 : new character(30, 120, "brown", 450, 80),
+  landscape : new character(width, 20, "green", 0, 200)
+} 
+
+//apply upgrades
+upgradeJump();
+
+  //upgrades
+ // upgradeSpeed();
+
+
+myGameArea.start();
+
+}
+
+
+function startGame() {
+
+  objects = {
+  protagonist : new character(30,30,"red",30,170),
+  obstacle1 : new character(10, 30, "brown", 200, 170),
+  landscape : new character(width, 30, "green", 0, 200)
+}
+level = 1;
+  myGameArea.start();
+
+}
+
+function startGame2() {
+
+level = 2;
+objects = {
+protagonist : new character(30,30,"red",30,170),
+obstacle1 : new character(10, 90, "brown", 200, 110),
+landscape : new character(width, 30, "green", 0, 200)
+}
+
+// console.log(objects.obstacle1.height)
+myGameArea.start();
+
+}
+
+  
+
+var myGameArea = {
+  canvas : document.createElement("canvas"), //here is the element canvas
+  start : function() { //takes the above canvas elt and adds attributes
+    this.canvas.width = 600;
+    this.canvas.height = 250;
+    this.context = this.canvas.getContext("2d");
+    this.fillStyle = "blue";
+    //this.fillRect(0,0,this.canvas.width, this.canvas.height);
+    document.body.insertBefore(this.canvas, document.body.childNodes[0]);//why?
+    this.interval = setInterval(updateGameArea, 25);   
+  },
+
+
+  
+  reset : function() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+} 
+
+function updateGameArea() {
+
+  getAnswer();
+   
+  updateTextBox();
+
+  myGameArea.reset();
+  
+  objects['protagonist'].animate();
+
+   for (let ind in objects ) { 
+    objects[ind].redraw();
+   }
+
+if (objects.protagonist.x >= 400) {
+//clearInterval(myGameArea.interval);
+//startGame2();
+   }
+
+
+}
+// new character!
+
+function character(width, height, color, x, y) {
+   //may not work on firefox -> https://www.w3schools.com/jsref/event_key_keycode.asp
+
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+    this.cx = (2*this.x+this.width)/2.0;
+    this.cy = (2*this.y+this.height)/2.0;
+
+    this.redraw = function() {
+    this.ctx = myGameArea.context;
+    this.ctx.fillStyle = color;
+    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.cx = (2*this.x+this.width)/2.0;
+    this.cy = (2*this.y+this.height)/2.0;
+     }
+    
+    //for your protagonist, only!
+
+    this.gravity = 10.0/ 3.0;
+    this.JumpVeloc = 20;
+    this.currentVeloc = 0.0;
+    this.jumpState = false;
+    this.initialV = 5;
+    
+
+
+      //move your character 
+     this.moveLeft = function() {this.x-=(this.initialV);}
+     this.moveUp = function() {this.y-=(this.initialV);}
+     this.moveRight = function() {this.x+=(this.initialV);}
+     this.moveDown = function() {this.y+=(this.initialV);}
+
+    this.currentObjectState = [
+      ["left", false],
+      ["up", false],
+      ["right", false],
+      ["down", false],
+      ["jump", false],
+      ["collided", false]
+    ];
+    //add a state for jump
+    
+    this.objectState = { 
+      right : false,
+      left : false,
+      up: false,
+      down: false
+    };
+
+    this.setDir = function(dir, boolean) {
+      this.currentObjectState.forEach(elt => {
+        if (elt[0] === dir) {
+          elt[1] = boolean;
+        //  console.log(this.currentObjectState)
+          return 1;
+        }
+      })
+    }
+    
+    this.animate = function() {
+
+
+    //which key is pressed? set true or false
+      window.addEventListener('keydown', function(event) {
+    if (event.keyCode == 37) {objects.protagonist.objectState.left = true; };
+    if (event.keyCode == 38) {objects.protagonist.objectState.up = true};
+    if (event.keyCode == 39) {objects.protagonist.objectState.right = true};
+    if (event.keyCode == 40) {objects.protagonist.objectState.down = true;}; 
+
+
+    //jump if spacebar pressed - do nothing until jump has finised (avoid multiple presses)
+    if ((event.keyCode == 32) && (objects.protagonist.jumpState == false))  {
+       objects.protagonist.jumpState = true;
+       objects.protagonist.currentVeloc = objects.protagonist.JumpVeloc; 
+       objects.protagonist.y -= this.objects.protagonist.JumpVeloc;
+
+    }; 
+  })
+
+    window.addEventListener('keyup', function(event) {
+    if (event.keyCode == 37) {objects.protagonist.objectState.left = false;};
+    if (event.keyCode == 38) {objects.protagonist.objectState.up = false};
+    if (event.keyCode == 39) {objects.protagonist.objectState.right = false};
+    if (event.keyCode == 40) {objects.protagonist.objectState.down = false;}; 
+    })
+     
+
+    //are you standing still?
+    this.fallingState = function() {
+
+    for (let i in objects ) {     
+      if ((Math.abs(this.cx - objects[i].cx) < ((objects[i].width+this.width)/2.0))
+       &&
+        ((this.y + this.height) >= objects[i].y)
+       && !(objects[i]==objects['protagonist'])
+       ) { // don't look at obj 1
+        return objects[i].y;
+      }
+    }
+   return true;
+}
+
+    //if not, you must be moving! 
+    if ((this.fallingState() == true)) {
+      this.currentVeloc -= this.gravity;
+      this.y -= this.currentVeloc;
+    } else {
+      this.y = this.fallingState() - this.height; //reset height/end jump
+      this.jumpState = false;
+      this.currentVeloc = 0.0;
+    }
+  
+    //am i moving horizontally?
+    this.canMoveHorizontally = function() {
+    //where are you standing on/or are you falling?
+    for (let i in objects) {     
+      if ((Math.abs(this.cx - objects[i].cx) <= ((objects[i].width+this.width)/2.0)) 
+      &&
+        (Math.abs(this.cy - objects[i].cy) < ((objects[i].height+this.height)/2.0)) 
+      && !(objects[i]==objects['protagonist'])) { // don't look at obj 1
+      return objects[i];
+      }
+    }
+   return true;
+}
+
+ //if not, in which direction?
+  if ((object = this.canMoveHorizontally()) != true) {
+   if ((this.cx - object.cx) < 0) {
+     this.objectState.right = false;
+   } else {
+    this.objectState.left = false;
+   }
+  }
+
+
+
+      // if ((this.x + this.width) == objects[i].x) {
+      //   if ((this.y + this.height) > objects[i].y) {
+      //      this.setDir("right", false);
+      //     }
+      //   };
+
+      // if (this.x == (objects[i].width + objects[i].x)) {
+      //   if ((this.y + this.height) > objects[i].y) {
+      //      this.setDir("left", false);
+      //     }
+      //   };
+
+      
+
+
+
+
+    if (this.objectState.left) {
+        this.moveLeft();       
+       }
+
+       if (this.objectState.up) {
+        // this.moveUp();       
+       }
+    
+       if (this.objectState.right) {
+        this.moveRight();       
+       }
+
+       if (this.objectState.down) {
+        // this.moveDown();       
+       }
+
+      }
+   
+  }
+
+
+updateStat = false;
+
+function updateTextBox() {
+this.ctx = myGameArea.context;
+ctx.font = "22px Arial";
+you = objects.protagonist
+
+if (level == 1) {
+direction.innerHTML= " get to the end of this platform"; 
+}
+
+if (level == 2) {
+if(you.x <= 40) {
+direction.innerHTML="That was easy, but you can't jump over this one";
+} 
+if ((you.x > 40) && (answer == 0)) {
+direction.innerHTML="you need to level up your jumping; do this by doing math. \n Here's one: Marsha jumped 5ft more than John. Together, they jumped 15ft. How much did John jump?"; 
+}
+
+if (answer == 10) {
+  //upgrade jump velocity
+ upgradeJump();
+ direction.innerHTML="congrats, you can jump higher! Try it again";
+ inputBox = document.querySelector("input");
+ inputBox.value = "";
+ answer = -1;
+                                                          
+} 
+
+if (you.x >=width) {
+  direction.innerHTML="This is how you'll get through the copious obstacles in this game"
+} 
+}
+
+if (level == 3) {
+  direction.innerHTML = "But can you make this jump?"
+
+  if (you.x > 130) {
+    direction.innerHTML = 'you need to power your SPEED to make this jump'
+    if (answer == 4) {
+      upgradeSpeed();
+      answer = -1;
+    }
+  }
+
+}
+
+}
+
+function upgradeJump() {
+  objects.protagonist.JumpVeloc+=5;
+}
+
+let answer = 0;
+  //check for answer
+  function getAnswer() {
+ 
+  inputBox = document.querySelector("input");
+  inputBox.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13) {
+     answer = event.target.value;
+    }
+  });
+
+  return answer; 
+}
+
+
+
+
+startGame3();
+
+</script>
+
+
+
+</body>
+
+
+
+</html>
