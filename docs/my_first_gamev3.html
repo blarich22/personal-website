@@ -50,12 +50,25 @@
 <!-- 12/20 - 12-1230 - looked at the code, making plans for next levels -->
 <!-- 12/21 - 9-930am - sketched deign for arrows; made some -->
 <!-- 12/21 - 9:30-10am - block move right upon pressing key-->
-<!-- ?21/21 - 1:30-2pm - can move left and right upon pressing left and right -->
+<!-- ?21/21 - 1:30-2pm - can move left and right upon pressing left and right -->\
+
+<!-- 12/21 - 2-2:30pm - enlarged buttons -->
 
 <!DOCTYPE html>
 <style>
-  button.r {
-    margin: 1px 100px 0px 150px;
+  button {
+      width: 200px;
+      height: 200px;
+  
+  }
+
+  input {
+    display: block;
+    color: grey;
+  }
+
+  /* button.r {
+    margin: 1px 0px 0px 150px;
   }
 
   button.l {
@@ -63,9 +76,8 @@
   }
 
   button.j {
-    display: inline-block;
     margin: 1px 100px 0px 400px;
-  }
+  } */
 
 
 </style>
@@ -74,11 +86,11 @@
 
  
   <p id="directions"></p>
-  <input type="text" onclick="generateText()"visibility="hidden" size="30"> type answer and press ENTER </input> 
+  <input type="text" style="width:300px" value="type answer and press ENTER">  </input> 
   <!-- <img src="speedquestion.png"></img> -->
-
-  <button class="r" onmousedown="moveTrue('r')" onmouseup = "moveFalse('r')" >right</button>
   <button class="l" onmousedown="moveTrue('l')" onmouseup = "moveFalse('l')" >left</button>
+  <button class="r" onmousedown="moveTrue('r')" onmouseup = "moveFalse('r')" >right</button>
+
   <!-- <button class="r" onmousedown="moveTrue('right')" onmouseup = "moveFalse('right')" >right</button> -->
   <button class="j" onmousedown="moveTrue('j')" onmouseup = "moveFalse('j')" >jump</button>
 
