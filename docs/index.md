@@ -13,7 +13,7 @@ It is under construction at the moment
 
 Other Projects: <a href="./my_first_gamev3.html"> fsdfsdfs<a>
   
-First Game pt2: <a href="../my_first_gamev3.html"> fdfjdas;fd<a>
+First Game pt2: <a href="./game_1_22/my_first_gamev3.html"> fdfjdas;fd<a>
   
 USE THIS: 
 
