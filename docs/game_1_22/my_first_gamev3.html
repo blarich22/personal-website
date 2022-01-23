@@ -124,7 +124,8 @@
 <!-- 1.20 - 7-730 - can transition screens to diff levels -->
 <!-- 11-11:30AM - can move to the left and to the right now pressing buttons -->
 <!-- 11---- miseed a log earlier-->
-<!--  -->
+
+<!--1.22 -- missed a log!! experimented with left/right for a few hours   -->
 
 <!DOCTYPE html>
 <style>
@@ -147,7 +148,7 @@
     <button class ="upgrade" style="width:60px; height:30px"> upgrade </button>
   <input type="text" style="width:300px" value="type answer and press ENTER">  </input> 
   <!-- <img src="speedquestion.png"></img> -->
-  <button class="l" onmousedown="onPressArr('l')" onmouseup = "onReleaseArr('l')" >left</button> 
+  <button class="l" onmouseenter="onPressArr('l')" onmouseleave = "onReleaseArr('l')" >left</button> 
   <button class="r" onmousedown="onPressArr('r')" onmouseup = "onReleaseArr('r')" >right</button>
   <button class="j" onmousedown="onPressArr('j')" onmouseup = "onReleaseArr('j')" >jump</button> 
 
