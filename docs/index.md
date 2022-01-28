@@ -15,6 +15,7 @@ Other Projects: <a href="./my_first_gamev3.html"> fsdfsdfs<a>
   
 First Game Version 1/22: <a href="./game_1_22/my_first_gamev3.html"> click<a>
   
+BLOG POSTS!!!! + more projects: https://andrewrichards131.wordpress.com/#
 USE THIS: 
 
 ### Content 
