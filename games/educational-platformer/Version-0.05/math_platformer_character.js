@@ -1,7 +1,7 @@
 // // new character!
 // function character(width, height, color, x, y) {
 //    //may not work on firefox -> https://www.w3schools.com/jsref/event_key_keycode.asp
-
+//games/educational-platformer/Version-0.05/
 //     //object dimensions
 //     this.width = width;
 //     this.height = height;
