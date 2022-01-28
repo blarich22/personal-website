@@ -1,0 +1,251 @@
+
+<!-- may not work on firefox -->
+
+<!-- 12/10 - started copying down code/brainstorming around 7 -->
+<!-- 12/11 - 9:30-10am; learned about keycodes and character codes -->
+<!-- 12/11 - 10-10:30am; spent thirty minutes debugging!!! :< -->
+<!-- 12/11 - 30-11:00am - more debugging and learning...      -->
+<!-- 12/11 - 12:00-30pm more playing around, but code move -->
+<!-- 12/11 - 12:30-1pm - more playing, but via keyboard, can move all ways      -->
+<!-- 12/13 - 8-8:30am - created a jump function  -->
+<!-- 12/13 - 8:45-9:15am - tested jump function not working -->
+<!-- 12/13 - 9:30-10 - jump is happening, but too quickly -->
+<!-- 12/13 - 10-10:30am - tried various jump models did not work -->
+<!-- 12/13 - 30-11am - realized issue with the keydown switch must fix -->
+<!-- 12/13 - 11:30-12pm - jump seems to work! -->
+<!-- 12/13 - 12-1230pm - missed log!!! -->
+<!-- 12/13 - ->1pm: need to test functions -->
+<!-- 12/13 - 5:30pm: have NOT logged various times :< but got jump+horizontal mvt working -->
+<!-- 12/14 - 6-630am: perfected jump+horizontal plans, making plans for stage, -->
+<!-- break!!!! -->
+<!-- 12/14/14 3:30-4pm: made stage, started building obstacls -->
+<!-- 12/14 3:30--pm: block collides with obstacle from left and right -->
+<!-- 12/14 4-4:30pm: implementing function that allows blocks to stand on objects -->
+<!-- 12/15 7:15-45am: block function partially works -->
+<!-- 12/15 9-9:30am: cleaned up the code so that there's an array for objects -->
+<!-- 12/15 30-10AM: cleaned up code so that I redraw in an array -->
+<!-- 12/15 10-1030am: too much debugging for a bracket error -->
+<!-- 12/15 1030-11am: changed colors, cleaned up, code works like two logs ago -->
+<!-- 11-1130 - thought of design for detecting vertical collisions -->
+<!-- 11:45-1230 - implemented it, finding an error with the function -->
+<!-- 110-140 - implemented jump function ,need to add gravity -->
+<!-- 140-210 - implemented a gravity variable and state, need to refine -->
+<!-- 3320 -4pm - gravity works -->
+<!-- 12/16 = 530-6pm - sketched a design for doing collisions -->
+<!-- 12/16 = 6-530 - got the block to collide with obstacles -->
+<!-- 12/16 = 630-7 - found a jump function bug need to fix! -->
+<!-- 12/16 - 8-847am - managed to make the restart! now, we have level 2 -->
+<!-- 12/16 - 9-930am - constructed text at bottom to guide player -->
+<!-- 12/16 - 11-130am - sketched and made rudimentary function to get "answers" -->
+<!-- 12/16 - 5-530pm - created an input box via html -->
+<!-- 12/16 - 5:40-610pm - created function to get answer -->
+<!-- 12/16 - 610-630; 7-730 - jump height now increases upon getting an answer correct -->
+<!-- 12/16 - 730-8pm - added more instructions, the game is close to done! -->
+<!-- 12/17 - 8-8:30am - beta tested for fun -->
+<!-- 12/17 - 8:30am-9am - made track 3 (outline), found problems -->
+<!-- 12/18 - 8:30-9am - fixed erro in code -->
+<!-- 12/18 - 9-9:30am - got image to appear -->
+
+
+<!-- 12/20 - 12-1230 - looked at the code, making plans for next levels -->
+<!-- 12/21 - 9-930am - sketched deign for arrows; made some -->
+<!-- 12/21 - 9:30-10am - block move right upon pressing key-->
+<!-- ?21/21 - 1:30-2pm - can move left and right upon pressing left and right -->
+
+<!-- 12/21 - 2-2:30pm - enlarged buttons -->
+<!-- 12/21 - 2:30-3pm - resized everything for phone -->
+
+<!-- 12/22 - 8-8:30am - created different files for everything -->
+<!-- 12/22 - 9:30-10am - sketched design for a double jump function -->
+<!-- 12/23 - 10-10:30am - can juump - but infinitely!!!  -->
+<!-- 12/123 - 11:30-12am - tried a design to do double jump ONCE, in the wrks -->
+
+<!-- 12/27 - 8:30-9am - sketched another design for dbljump, to test -->
+
+<!-- 12/28 - 7:30-8am - got double jump to work fine, changed the code !!!! -->
+
+<!-- 12/29 - 2:30-3am - cleaning up code; create classes for various objects  -->
+<!-- 12/29  - 4 - 4:30 - changed parameters for object functions, only takes one thing instead of many-->
+<!-- 12/30 - 8-8:30am - unable get code working using classes, after many attempts -->
+<!-- 12/30 -- 8:30-9am - trying to fix  -->
+<!-- 12/30 - 4:10am - cleaned up code for detecting collisions -->
+<!-- 12/31 -- 8-830am - cleaned up collisions code more -->
+<!-- 12/31 -- 8:30-40; 9:-30am - cleaning up falling state, is glitching-->
+<!-- 12/31 -- 10-130am, after failed attempts managed to get it stable -->
+<!-- 12/31 -- 130 - 11am, more cleaning,  -->
+<!-- 12/31 -- 11-12:30pm , research on methods, inheritance; want to inherit and modify function -->
+<!-- 12/31 -- 12-1pm, research on objects and inheritng functions -->
+<!-- 1/1 --8:30-10am, spent time looking at the code, figuring out how to register collision -->
+<!-- 1/1 -- 10:30am-11am - still working with figuring out why collision variable does not show 'eft or right' -->
+<!-- 1/1 -- 11:07 - 11:37am - collision variables works! (was using wrong variables); cand can push now -->
+<!-- 1/1 -- 11:37 - 12:007am - cleaned up function so that it pushes more cleanly -->
+<!-- 1/1 12:07-12:37pm - block pushes cleanly, can move simple block obj-->
+<!-- 1/1 12:50 - 1:20pm - created and started to test a new state to control movement -->
+<!-- 1/1 1:20 - 2pm - can control movement using the "motions" object -->
+<!-- 1/1 2:pm -230pm - researched if then short hand again -->
+
+<!-- 1/3 7:30am-8am - created variables for passive speed, seems to fidget a lot -->
+<!-- 1/3 8-am - thought about better collision mechanism / little distracted..... -->
+<!-- 1/3 11:15am - 55am   sketched design for coding mech -->
+<!-- 1/3 1-13-pm - still sketching design, a little distractived -->
+<!-- 1/3 2:30-3pm - collision can detect from left / rigt -->
+<!-- 1/3 3-3:30pm - can detect collision, left, right, and up, tested -->
+<!-- 1/4 8-9:25sm - ditto above from three logs -->
+<!-- 1/4 10:30am - 11am - cleaned collsion -->
+<!-- 1/4 11-11:30am: move collision to occur AFTER animate function; need to redo coll -->
+<!-- 1/4 11:30-12pm: ditto -->
+<!-- 1/4 12-12:30pm: ditt -->
+<!-- 1/4 2-30pm-3pm: ditto, please see comments in the character file in collsoin -->
+
+<!-- 1/5 7:30am-8am: stared at the code, decided not to use shorthand -->
+<!-- 1/5 8-8:30am: created helper functions to assist with setting position -->
+<!-- 1/5 9:30am-10am: horizontal collision works and teste -->
+<!-- 1/5 10:00am-10;30am: vertical collisions work -->
+<!-- 1/5 10:30-11am: made heler functions for collisions -->
+<!-- 1/5 11am - 11:30am: made the helper functions I think I need -->
+<!-- 1/5 12:14-1pm: added functions to make things cleaner, now, need to test again -->
+<!-- 1/5 1-1:30pm: collision detection kind of working   -->
+<!-- 1/5 1:30-2pm: block stops when approached hor -->
+<!-- 1/5 2-4pm: hor and ver dtected; starting to fall through ground -->
+<!-- 1/5 5am: figured out why its falling through --- its going fast enough to go through objects -->
+
+<!-- 1/6 3:30-4pm - managed to get collision working (minor minor bugs), now to make object moveable -->
+
+<!-- 1/7 7-7:30am - found three new issues with collision, will check in with them later -->
+
+<!-- 1/11 - spent much time looking/cleaning code; protagonist does not show up; can't press the right key and move  -->
+<!-- 1/13 - speed up code; fixed movement; need to create object file -->
+<!-- 1/13 - 9:30-10am: thought of a way to link levels; started it  -->
+
+<!-- 1.14 - 8-8930am: debugging code to link  -->
+<!-- 1.15 - 3hrs - debugging code to link win conditionsl-->
+
+<!-- 1.19 - 5:00-5:30  -   can double jump inf when collided with objects (FIX); created lvl buttons -->
+<!-- 1.20 - 7-730 - can transition screens to diff levels -->
+<!-- 11-11:30AM - can move to the left and to the right now pressing buttons -->
+<!-- 11---- miseed a log earlier-->
+
+<!--1.22 -- missed a log!! experimented with left/right for a few hours   -->
+
+<!-- 1.22 - can move left and right freely with phone  -->
+
+<!-- 1.27 - sketched plan for objects to have arguments -->
+<!-- 3-4pm - making game not working am tired -->
+
+<!DOCTYPE html>
+<style>
+  button {
+      width: 200px;
+      height: 200px;
+  }
+
+  input {
+    display: block;
+    color: grey;
+  }
+  
+  </style>
+<html>
+  <body>
+
+
+    <p>Welcome to my first <i>platformer</i> game; 
+    <ul>1) get to the end of each stage </ul>
+      <ul>2) do math problems to upgrade your abilities </ul>
+      <ul>3) use arrow keys/space bar to move. If on phone, use "buttons" below </ul>
+    <p>Click on a levek to begin!
+    </p>
+    
+    
+    <p id="directions"></p>
+    <button class ="upgrade" style="width:60px; height:30px"> upgrade </button>
+  <input type="text" style="width:300px" value="type answer and press ENTER">  </input> 
+  <!-- <img src="speedquestion.png"></img> -->
+  <button class="l" ontouchstart="onPressArr('l')" ontouchend = "onReleaseArr('l')" >left</button> 
+  <button class="r" ontouchstart="onPressArr('r')" ontouchend = "onReleaseArr('r')" >right</button>
+  <button class="j" ontouchstart="onPressArr('j')" ontouchend = "onReleaseArr('j')" >jump</button> 
+
+  <button class="lvl" onclick="startGame1(1)">    LEVEL 1 </button>
+  
+  <button class="lvl" onclick="startGame1(2)"> LEVEL 2 </button>
+
+  <button class="lvl" onclick="startGame1(3)"> LEVEL 3 </button>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+
+
+<script type = "text/javascript" src="game_objects.json"></script>
+
+<script src="math_platformer_initialize_game.js"> </script>
+
+<script src="math_platformer_character.js"></script>
+
+<script src="math_platformer_generate_text.js"></script>
+
+
+ <script>
+
+
+
+//TO DO: START UP SCREEN - DONT USE CONTROLS
+
+
+  direction = document.getElementById("directions");
+  input = document.querySelector("input");
+  speedQuestion = document.querySelector("img");
+
+function onPressArr(direction) {
+  (direction == "r") ? (objects.protagonist.keyPressed.right = true) : 0;
+  (direction == "l") ? (objects.protagonist.keyPressed.left = true) : 0;
+  (direction == "j") ? (objects.protagonist.keyPressed.spacebar.num = 1) : 0;
+}
+
+function onReleaseArr(direction) {
+  (direction == "r") ? (objects.protagonist.keyPressed.right = false) : 0;
+  (direction == "l") ? (objects.protagonist.keyPressed.left = false) : 0;
+  //(direction == "j") ? (objects.protagonist.keyPressed.spaceBar = 1) : 0;
+
+}
+
+
+// function generateText() {
+//   if ((level == 3) && (click == false)) {
+//     direction.innerHTML = "This is a test"
+//   }  
+// }
+
+
+// function upgradeSpeed() {
+//   window.addEventListener(ondblick, function() {
+//     objects.protagonist.initialV+=13;
+//   }) 
+//   if (objects.protagonist.objectState.right == )
+  
+//   }
+// }
+  
+
+
+
+
+
+
+function upgradeJump() {
+  objects.protagonist.JumpVeloc+=5;
+}
+
+
+
+
+
+</script>
+
+
+
+</body>
+
+
+
+</html>
