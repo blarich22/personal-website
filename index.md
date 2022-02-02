@@ -1,21 +1,21 @@
-## Welcome to Andrew Richards' Webite
+## Coding Projects 
 
-TO PLAY MY LATEST GAME; GO HERE
-<a href="./games/rpg-text-adventure.html">Andrew Richards game<a>
+
+Feel free to try! All in progress
+
+**JAVASCRIPT**
+
+Text-adventure RPG:
+<a href="./games/rpg-text-adventure.html">Play<a>
   
 CHECK OUT MY GEOMETRY PROBLEM MAKER, HERE:
 <a href="./games/geometry_problem_generator.html">generator<a>
 
-This site is used to put down my projects/ various content
-  
-It is under construction at the moment
-
 <!-- Other Projects: <a href="./my_first_gamev3.html"> fsdfsdfs<a> -->
   
-Platformet 1/27: <a href="./games/educational_platformer/Version-1/my_first_game.html"> click<a>
+A Platformer Game 1/27: <a href="./games/educational_platformer/Version-1/my_first_game.html"> click<a>
   
-BLOG POSTS!!!! + more projects: https://andrewrichards131.wordpress.com/#
-USE THIS: 
+BLOG POSTS!!!! + more projects: https://andrewrichards131.wordpress.com/# 
 
 <!-- ### Content 
 ```markdown
