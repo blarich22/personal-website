@@ -4,7 +4,9 @@
 # 11-1130am: cannot write yet
 #12-1230 - sketched ideas to retrive multi-char num
 #2-230: can do above; sketched ideas to generate answers for all
+#2/25 7-7:40am: generateAnswers now works as intended orginally 
 
+##Note: Credit to  https://www.mukilteoschools.org/cms/lib/WA01819447/Centricity/Domain/2486/Grade%207%20Advanced%20Math%20Review%20Packet.pdf
 
 numArr = [] #array of numbers
 
@@ -26,17 +28,15 @@ def findNum(text):
 def findPercentOf(index):
      #step 2: perform an operation 
      answer = (numArr[index] * numArr[index+1]) / 100
-     print(index)
      answer = str(answer)
      return str(answer)
 
 def generateAnswers():
      arr = []
      print(numArr)
-     for x in range(len(numArr)):
-          if x != len(numArr)-1: #skip last number
-               arr.append(findPercentOf(2*x)) #skip two steps
-     print(arr)
+     for x in range(0,len(numArr)-1,2):
+          arr.append(findPercentOf(x)) 
+     return arr
      
 
 #read file
@@ -48,8 +48,8 @@ text = f.read()
 #solve problems
 #step 1: collect all numbers
 findNum(text)
-answer = generateAnswers()
-answer = "5"
+answers = generateAnswers()
+
      
 
 
@@ -58,7 +58,7 @@ answer = "5"
 
 f.close()
 f = open("list_of_problems.txt", "a")
-f.write("\n"+answer)
+f.write("\n"+str(answers))
 f.close()
 
 
