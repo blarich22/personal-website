@@ -1,4 +1,4 @@
-**Goal of game
+**Goal of game**
 
 Traverse lvls using arrow keys
 Answer questions to progress!
