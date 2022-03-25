@@ -17,9 +17,9 @@ Feel free to try! All in progress
 
 
 **GITHUB PAGE**
-    https://github.com/arichards131/personal-website
+    https://blarich22.github.io/personal-website/
     
-**BLOG POSTS!!!! + more projects:** https://andrewrichards131.wordpress.com/# 
+
 
 <!-- ### Content 
 ```markdown
