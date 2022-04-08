@@ -1,0 +1,67 @@
+
+<!-- 3/19: 9-930 - sketeched design to check quiz answers -->
+<!-- 1030-11am - sketeched and test if detects checked answers -->
+<!-- 3/20 - 7:30 - 7:55am - test to see if it checks for answers input once;  -->
+<!-- 3/20 - 9:40-55am - both ans disappear, must test    -->
+<!-- 3/20 - 12-12:30pm - changed mind; want to get answer choice upon click -->
+<!-- 3/20 12:30-12:55pm -- sketeched designes; decided, need to use variable to remember -->
+<!-- 3/20 - 2-215pm -- have an idea: make a function see line 10 -->
+
+<!-- 3/23 - 8-8:25am -- can only chose one thing now (closer) -->
+<!-- 8:30-8:55 - thought about making code to write problems....not sure yet -->
+<!-- 11-1130am - research ways to insert elements after another -->
+
+<!-- 3.25 7:30-8am - quiz prototype is complete -->
+<!-- 8:30-9am - thought about cleaning up code first! -->
+
+<!-- PERCENTAGE QUESTION make a function include setTimeout, get event target from there -->
+
+    <p> select an ability to upgrade: </p>
+    <input type = "radio" style="display: inline" value="40">Height<br>
+    <input type = "radio" style="display: inline" value="60">Speed<br>
+    <input type = "radio" style="display: inline" value="80">Strength<br>
+
+
+    <p> Answer the questions in any order. <br>
+        Each correct answer result in upgrades </p>
+
+
+
+<div id="0" onclick="checkAns()" >
+    <p>60 percent of 100 =</p>
+    <input type = "radio" style="display: inline" value="40">40<br>
+    <input type = "radio" style="display: inline" value="60">60<br>
+    <input type = "radio" style="display: inline" value="80">80<br>
+    <input type = "radio" style="display: inline" value="100">100<br>
+</div>
+
+<div id="1" onclick="checkAns()">
+    <p>50 percent of 110 =</p>
+    <input type = "radio" style="display: inline" value="45">45<br>
+    <input type = "radio" style="display: inline" value="55">55<br>
+    <input type = "radio" style="display: inline" value="65">65<br>
+    <input type = "radio" style="display: inline" value="75">75<br>
+</div>
+
+
+<div id="2" onclick="checkAns()" >
+    <p>100 percent of 40 =</p>
+    <input type = "radio" style="display: inline" value="20">20<br>
+    <input type = "radio" style="display: inline" value="30">30<br>
+    <input type = "radio" style="display: inline" value="40">40<br>
+    <input type = "radio" style="display: inline" value="100">100<br>
+</div>
+
+
+<div id="3" onclick="checkAns()">
+    <p>30 percent of 60 =</p>
+    <input type = "radio" style="display: inline" value="18">18<br>
+    <input type = "radio" style="display: inline" value="20">20<br>
+    <input type = "radio" style="display: inline" value="32">32<br>
+    <input type = "radio" style="display: inline" value="36">36<br>
+</div>
+
+
+
+ <!-- <button onclick="getAns()"> test </button>  -->
+<script src="test.js"></script>
