@@ -15,6 +15,7 @@ Feel free to try! All in progress
 
   A Platformer Game 1/27: <a href="./games/educational_platformer/Version-1/my_first_game.html"> click<a>
 
+      5/27: Interlude, now can answer questions to upgrade abilities!!! <a href="./games/educational_platformer/Version-1.5.8/my_first_game.html"> click<a>
 
 **GITHUB PAGE**
     https://blarich22.github.io/personal-website/
