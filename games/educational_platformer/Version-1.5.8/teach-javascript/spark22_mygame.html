@@ -1,0 +1,226 @@
+
+
+<!-- PART 1: HTML -->
+
+<!-- Hyper Text Markup Language -->
+
+<html> 
+    <body>
+
+        <!-- p: paragraph -->
+        <p>Welcome to my first 2d plaformer</p>
+        
+        <!-- TO DO: Add another set of brackets, should say.."blah" -->
+        <!-- button: clickable icons -->
+        <button id="lvl1" onclick="startGame1(1)"> LEVEL 1: First </button>
+        <button id="lvl2" onclick="startGame1(2)"> LEVEL 2 (TO DO): Height </button>
+
+        <!-- TO DO: Create a new button; Should say "LEVEL 2: "Name each level" (1min) -->
+        <!-- TIME PERMITTING: Show how to color buttons with css -->
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- PART 2: JAVASCRIPT -->
+
+<script> 
+
+// COPY AND PASTE THE ABOVE CODE
+// get element lvl 2 and then change to red
+
+//change width/slash
+
+//Add color
+
+
+//variables
+
+//ints
+screenW = 600; //width of the game stage
+screenH = 230; //height of the game stage
+
+
+//Strings
+
+//array 
+objects = {}
+
+
+
+
+//Quiz
+// WHICH OF THE FOLLOWING IS FALSE?
+// a. variables allow you to rewrite exp
+// b. num = 5 is a variable
+// c. "buzz" is a variable
+// d. variables can be strings, ints, and arrays
+//////////////////////////////////////////////
+
+
+
+
+
+// UNUSED - get all buttons
+button = document.getElementById("lvl1")
+button.style.color = "blue"
+
+
+
+
+
+
+//TO DO, change the width and height to be greater/equal to 600 and 230
+
+
+
+
+//all of the objects you need in the game
+ground = {w: screenW, h: 30, clr: "green", x: 3, y: 200} //ground
+medTree = {w: 10, h: 90, clr: "brown", x: 200, y: 200-110}; //medium tree
+protagonistArg = {w: 30, h: 30, clr: "red", x: 30, y: 200-30}
+
+
+
+if (5 < 2) {
+  console.log("hi");
+}
+
+function startGame1(level) { 
+  
+  //before starting a new level, first end the first one
+  //if this is the first one, nothing....
+  clearInterval(myGameArea.game);
+  
+  
+  //switch statement
+  //look at the value of level
+  //depending on that value, goes to that part
+  switch (level) {
+    
+    //if on level 1
+    //TO DO: PUT FILL WITH YOUR OWN OBJECTS
+    case 1: 
+    objects = { 
+      ground: new object(ground),
+      protagonist: new Protagonist(protagonistArg),
+      smallTree: new object(new tree({h: 50, x: 100, w: 50})), 
+      smallTree2: new object(new tree({h: 50, x: 250, w: 50})),
+      smallTree3: new object(new tree({h: 50, x: 400, w: 50})), 
+    }
+    break;
+    
+    //Level2
+    case 2: 
+    objects = { 
+      ground : new object(ground),
+      protagonist : new Protagonist(protagonistArg), 
+    }
+    break;
+    
+    //no lvl
+    default:
+      break;
+    }
+    
+    
+    myGameArea.start();
+      
+  }
+  
+
+  //JAVASCRIPT OBJECT
+  //Where the stage is drawn/erased.
+  var myGameArea = {
+    // canvas : document.getElementsByClassName("stage"), //here is the element canvas
+    canvas: document.createElement("canvas"),
+    start : function() { //takes the above canvas elt and adds attributes
+      this.canvas.width = screenW;
+      this.canvas.height = screenH;
+      this.context = this.canvas.getContext("2d");
+      this.context.fillStyle = "blue" //need to fix
+      //place right after "Click on a level"
+      document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+      this.game = setInterval(updateGameArea, 2);   
+    },
+    reset : function() {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.context.fillStyle = "blue" //need to fix
+    }
+  } 
+  
+  
+  //FRAME UPDATED HERE:
+  //LIKE A PICTURE ANIMATION, the instructions are REPEATED INFINITELY unless told no
+  
+  function updateGameArea() {
+    //Erase
+    myGameArea.reset();
+    
+    //redraw all objects 
+    for (let ind in objects ) { 
+      objects[ind].redraw();
+    }
+    
+    //redraw protagonist
+    objects.protagonist.animate();
+    
+    //add CONS
+    p = objects.protagonist; //you
+
+
+
+    //EXAMPLE OF IF_THEN STATEMENTS
+    //If this statement is true, then what?
+        if (p.x > 50) { 
+          output = document.createElement("p")
+          output.innerHTML = "200";
+        // document.body.appendChild(output);
+         // clearInterval(myGameArea.game)
+        }
+    
+    //WIN CONDITION: TO DO
+   
+
+    //ERASE THIS PART
+    wonLevel = (p.x) >= (screenW - p.width); //protagonist
+    (wonLevel) ? (startGame1(level++)) : 0; //if you win, start the game again
+
+  }
+  
+  
+  
+  
+
+  
+  //////////////////////////////NOT COVERED
+  
+  //function (HELPER)
+  function getY(h,l) {return (l - h)};
+  
+  function tree(arguments) {
+  defaultValTree = [10, 30, "brown", 200, 170]
+  
+  h = ((arguments.h != null) ? arguments.h : defaultValTree[1]);
+    w = ((arguments.w != null) ? arguments.w : defaultValTree[0]);
+    clr = ((arguments.clr != null) ? arguments.clr : defaultValTree[2]);
+    x = ((arguments.x != null) ? arguments.x : defaultValTree[3]);
+    y = ((arguments.y != null) ? arguments.y : getY(h, ground.y));
+    
+    return {w: w, h: h, clr: clr, x: x, y: y};
+    
+  }
+
+</script>
+
+  <script src="https://blarich22.github.io/personal-website/games/educational_platformer/Version-1/math_platformer_character.js"></script>

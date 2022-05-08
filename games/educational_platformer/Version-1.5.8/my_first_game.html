@@ -1,0 +1,440 @@
+
+
+
+
+<!DOCTYPE html>
+<style>
+  #controlButton {
+      width: 200px;
+      height: 200px;
+  }
+
+  #std {
+    display: block;
+    margin-bottom: 50px;
+      /* width: 60px;
+      height: 30px; */
+      }
+  input {
+    display: block;
+    color: grey;
+  }
+
+  #upgradeMenu {
+    width: 100%;
+    height: 230px;
+  }
+
+  #multiple-choice div {
+    display: none
+  }
+
+  div {
+    background-color:aliceblue ;
+  }
+    
+  </style>
+
+ 
+ 
+<html>
+  <body>
+
+
+    <div id="background">
+
+    <div id="pausedScreen" style="display: none"> 
+      <p>PAUSED</p>
+
+
+    </div>
+    
+    
+  <div id="controls" style="display: none">
+    
+    <div id="phoneCtrl" style="display:none"> 
+      <button id="controlButton" ontouchstart="onPressArr('l')" ontouchend = "onReleaseArr('l')" >left</button> 
+      <button id="controlButton" ontouchstart="onPressArr('r')" ontouchend = "onReleaseArr('r')" >right</button>
+      <button id="controlButton" ontouchstart="onPressArr('j')" ontouchend = "onReleaseArr('j')" >jump</button> 
+    </div>
+
+    <br>
+
+    <button id ="std" onclick="toggleUpgradeMenu(allQs)"> upgrade </button>
+    
+    
+    
+</div>
+
+<p id="directions">
+      Click on a level to get started.
+    <!-- <p>Welcome to my first <i>platformer</i> game; 
+      <ul>1) get to the end of each stage </ul>
+      <ul>2) do math problems to upgrade your abilities </ul>
+      <ul>3) use arrow keys/space bar to move. If on phone, use "buttons" below </ul>
+    <p>Click on a level to begin!</p> -->
+</p>
+
+
+<div id="levels">
+  <button class="lvl" onclick="startGame(1)"> LEVEL 1 </button>
+  <button class="lvl" onclick="startGame(2)"> LEVEL 2 </button>
+  <button class="lvl" onclick="startGame(3)"> LEVEL 3 </button>
+  <button class="lvl" onclick="startGame(4)"> LEVEL 4 </button>
+  <button class="lvl" onclick="startGame(5)"> LEVEL 5 </button>
+  <button class="lvl" onclick="startGame(6)"> LEVEL 6 </button>
+  <button class="lvl" onclick="startGame(7)"> LEVEL 7 </button>
+  <button class="lvl" onclick="startGame(8)"> LEVEL 8 </button>
+  <button class="lvl" onclick="startGame(9)"> LEVEL 9 </button>
+  <button class="lvl" onclick="startGame(10)"> LEVEL 10 </button>
+  <br> <br>
+</div>
+ <button id="phoneButton" onclick="toggle(phoneCtrls)"> phone </button>
+
+
+ </div>
+</body>
+</html>
+
+<script src="test.js"></script>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script type = "text/javascript" src="game_objects.json"></script>
+
+<script src="math_platformer_initialize_game.js"></script>
+<!-- <script src="https://arichards131.github.io/personal-website/games/educational_platformer/Version-1/math_platformer_initialize_game.js"> </script> -->
+
+<!-- <script src="https://blarich22.github.io/personal-website/games/educational_platformer/Version-1/math_platformer_character.js"></script> -->
+
+<script src="math_platformer_character_working.js"></script>
+
+<script src="math_platformer_generate_text.js"></script>
+
+<script>
+
+//console.log(document.querySelector("embed"))
+  upgrades = 0;
+
+
+//TO DO: START UP SCREEN - DONT USE CONTROLS
+
+  directions = document.getElementById("directions");
+  levels = document.getElementById("levels");
+  upgradeOption = document.getElementById("upgradebutton");
+  input = document.querySelector("input");
+  controls = document.getElementById("controls");
+  speedQuestion = document.querySelector("img");
+  mathQs = document.getElementById("MthQs");
+  phoneButton = document.getElementById("phoneButton")
+  phoneCtrls = document.getElementById("phoneCtrl")
+  //mathProblemsDiv = document.getElementById("mathProblems")
+  //mathProblemsButtons = mathProblemsDiv.querySelectorAll("button");
+  cnvs = myGameArea.canvas;
+ pausedScreen = document.getElementById("pausedScreen")
+
+  onUpgradeMenu = false;
+  gamecode = null;
+
+//////SET ON CLICK FUNTIONS
+function showQs() {
+  show(allQs, cnvs)
+  autoPause()
+  upgradeOption.innerHTML = "return"
+}
+
+function autoPause() {
+  if (cnvs.style.display == "none") {
+    clearInterval(gamecode, 2);    //pause game //create seperate func
+  } else {
+   gamecode = setInterval(updateGameArea, 2); 
+  }
+}
+
+//hide a element if already shown or show if hidden
+function toggle(elt) {
+  isShown = elt.style.display == "none"
+  if (isShown) {        //pause / hide canvas
+    elt.setAttribute("style", "display: block"); //show upgrade menu
+  } else {
+    elt.setAttribute("style", "display: none");
+  }
+}
+
+//hide some shown element AND show some hidden element
+function switchScrn(hidden, shown) {
+ toggle(hidden)
+ toggle(shown)
+}
+
+
+
+//controls for characters (mob)
+function onPressArr(direction) {
+  (direction == "r") ? (gameobjects.protagonist.keyPressed.right = true) : 0;
+  (direction == "l") ? (gameobjects.protagonist.keyPressed.left = true) : 0;
+  (direction == "j") ? (gameobjects.protagonist.keyPressed.spacebar.num = 1) : 0;
+}
+
+function onReleaseArr(direction) {
+  (direction == "r") ? (gameobjects.protagonist.keyPressed.right = false) : 0;
+  (direction == "l") ? (gameobjects.protagonist.keyPressed.left = false) : 0;
+  //(direction == "j") ? (objects.protagonist.keyPressed.spaceBar = 1) : 0;
+
+}
+
+function startGame(lvl) {
+  showControls();
+  createLevel(lvl);
+}
+
+function showControls() {
+  controls.setAttribute("style", "display:block");
+}
+
+function toggleUpgradeMenu(allQs) {
+
+  toggle(allQs) //show/hide questions
+  toggle(cnvs) //hide/show canvas
+  toggle(pausedScreen)
+  toggle(phoneButton)
+  toggle(levels)
+  toggle(directions)
+  autoPause() //pause/play game
+  //upgrde.style.display = "block"
+ // showQuestion)
+}
+function upgrade() {
+  objects.protagonist.JumpVeloc += 1;
+  cnvs.setAttribute("style", "display: block");
+  upgradeMenu.setAttribute("style", "display: none");
+  upgradeOption.innerHTML = "return"
+}
+
+
+// function generateText() {
+//   if ((level == 3) && (click == false)) {
+//     direction.innerHTML = "This is a test"
+//   }  
+// }
+
+
+// function upgradeSpeed() {
+//   window.addEventListener(ondblick, function() {
+//     gameobjects.protagonist.initialV+=13;
+//   }) 
+//   if (gameobjects.protagonist.gameobjectstate.right == )
+  
+//   }
+// }
+  
+
+
+
+
+
+
+function upgradeJump() {
+  gameobjects.protagonist.JumpVeloc+=0.05;
+}
+
+function upgradeStr() {
+  gameobjects.protagonist.strength += (24100 / 10) 
+}
+
+
+
+
+</script>
+
+<script>
+  
+</script>
+
+
+</body>
+
+
+
+</html>
+
+
+
+<!-- 3/19: 9-930 - sketeched design to check quiz answers -->
+<!-- 1030-11am - sketeched and test if detects checked answers -->
+<!-- 3/20 - 7:30 - 7:55am - test to see if it checks for answers input once;  -->
+<!-- 3/20 - 9:40-55am - both ans disappear, must test    -->
+<!-- 3/20 - 12-12:30pm - changed mind; want to get answer choice upon click -->
+<!-- 3/20 12:30-12:55pm -- sketeched designes; decided, need to use variable to remember -->
+<!-- 3/20 - 2-215pm -- have an idea: make a function see line 10 -->
+
+<!-- 3/23 - 8-8:25am -- can only chose one thing now (closer) -->
+<!-- 8:30-8:55 - thought about making code to write problems....not sure yet -->
+<!-- 11-1130am - research ways to insert elements after another -->
+
+<!-- 3.25 7:30-8am - quiz prototype is complete -->
+<!-- 8:30-9am - thought about cleaning up code first! -->
+<!-- 3-3:30pm - merged questions and main page together -->
+
+<!-- 3/27 - need to go to github and edit character file -->
+<!-- PERCENTAGE QUESTION make a function include setTimeout, get event target from there -->
+<!-- 4/1 - 12-1230- getting questions right affects character's characteristics -->
+
+<!-- 4/3: 1:38 - 2pm: can show some question in quiz randomly -->
+
+<!-- 4/4 1:40pm - cleaned up the "deselect choice " function -->
+<!-- 1:40- 2:05 - question moves to the next question after answer right -->
+<!-- need to randomize questiuons -->
+
+<!-- list can randomly show questions -->
+
+<!-- 4/8 - can upgrade jump velocity; game pauses on quiz portion -->
+
+<!-- 4/9 - 6-625a leaned up code -->
+<!-- 
+4/19 - 123-1pm created code to move, not working
+3:30-4:15pm - trouble with collision
+4/20 - found issue, need to track elts being collided
+       //10:30-11am - block slows down upon collision, working on groups now
+       //11:30-11:55am - trying to get add/remove objects "in collision arr "
+4/21 - 7-730am discovered bug in find index func
+4/21 - 7:30-8am pushing block slows you down
+ 8-9am - option to upgrade diff abilities implemented
+9-9:55am - blocks can be moved with sufficient "strenght" -->
+
+<!-- 4/21 - 3:30-4 tried to create a div to seperate quiz fro instr -->
+<!-- 4/22 - 7-727am can select option without affecting quiz portion now -->
+<!-- 10-10:55am - swim options added, making a paused screen -->
+<!-- 4/22 - 12:40-12:15pm - color added to back ground -> but str not working -->
+
+<!-- 4/23pm - 705-8pm strength is restored (typo issues) -->
+
+
+<!-- 4/27 - 7-725am: can no longer click through quiz   -->
+
+<!-- 5/1 11-130am: tried to add color to stage -->
+
+<!-- 5/6 12:30-1am - found bug in code, block "jumps" with you, fixed via commenting -->
+<html>
+  
+  
+<div id="multiple-choice" style="display:none; background-color: aqua;" onclick="handleClick()">
+ 
+<h1><b> UPGRADE MENU </b></h1>
+
+<p> select an ability to upgrade:</p>
+
+ <div id="abilities" style="display: block; " onclick=handleClick()>
+    <input id = "height" type = 'radio' style='display: inline' >Height<br>
+    <input id= "swim" type = 'radio' style="display: inline">Swim<br>
+    <input id = "strength" type = 'radio' style="display: inline" >Strength<br>
+  </div>
+
+<p> Answer the questions in any order. <br>
+    Each correct answer result in an upgrade. <br>
+    Return at any time to the game </p>
+
+    <div id="quiz" style="display: block">
+    <div id=0>
+      <p> 9 percent of 40= </p></br>
+      <input type = 'radio' style='display: inline' value='5.6'>5.6<br>
+      <input type = 'radio' style='display: inline' value='2.6'>2.6<br>
+      <input type = 'radio' style='display: inline' value='7.6'>7.6<br>
+      <input type = 'radio' style='display: inline' value='3.6'>3.6<br>
+      </div>
+      
+      <div id=1>
+      <p> 30 percent of 30= </p></br>
+      <input type = 'radio' style='display: inline' value='9.0'>9.0<br>
+      <input type = 'radio' style='display: inline' value='15.0'>15.0<br>
+      <input type = 'radio' style='display: inline' value='13.0'>13.0<br>
+      <input type = 'radio' style='display: inline' value='0.0'>0.0<br>
+      </div>
+      
+      <div id=2>
+      <p> 10 percent of 30= </p></br>
+      <input type = 'radio' style='display: inline' value='6.0'>6.0<br>
+      <input type = 'radio' style='display: inline' value='3.0'>3.0<br>
+      <input type = 'radio' style='display: inline' value='5.0'>5.0<br>
+      <input type = 'radio' style='display: inline' value='11.0'>11.0<br>
+      </div>
+      
+      <div id=3>
+      <p> 6 percent of 30= </p></br>
+      <input type = 'radio' style='display: inline' value='3.8'>3.8<br>
+      <input type = 'radio' style='display: inline' value='1.8'>1.8<br>
+      <input type = 'radio' style='display: inline' value='4.8'>4.8<br>
+      <input type = 'radio' style='display: inline' value='10.8'>10.8<br>
+      </div>
+      
+      <div id=4>
+      <p> 1 percent of 90= </p></br>
+      <input type = 'radio' style='display: inline' value='6.9'>6.9<br>
+      <input type = 'radio' style='display: inline' value='7.9'>7.9<br>
+      <input type = 'radio' style='display: inline' value='0.9'>0.9<br>
+      <input type = 'radio' style='display: inline' value='2.9'>2.9<br>
+      </div>
+      
+      <div id=5>
+      <p> 0 percent of 60= </p></br>
+      <input type = 'radio' style='display: inline' value='4.0'>4.0<br>
+      <input type = 'radio' style='display: inline' value='0.0'>0.0<br>
+      <input type = 'radio' style='display: inline' value='6.0'>6.0<br>
+      <input type = 'radio' style='display: inline' value='2.0'>2.0<br>
+      </div>
+      
+      <div id=6>
+      <p> 7 percent of 80= </p></br>
+      <input type = 'radio' style='display: inline' value='14.6'>14.6<br>
+      <input type = 'radio' style='display: inline' value='4.6'>4.6<br>
+      <input type = 'radio' style='display: inline' value='5.6'>5.6<br>
+      <input type = 'radio' style='display: inline' value='3.5'>3.5<br>
+      </div>
+      
+      <div id=7>
+      <p> 3 percent of 40= </p></br>
+      <input type = 'radio' style='display: inline' value='1.2'>1.2<br>
+      <input type = 'radio' style='display: inline' value='2.2'>2.2<br>
+      <input type = 'radio' style='display: inline' value='10.2'>10.2<br>
+      <input type = 'radio' style='display: inline' value='7.2'>7.2<br>
+      </div>
+      
+      <div id=8>
+      <p> 7 percent of 70= </p></br>
+      <input type = 'radio' style='display: inline' value='13.9'>13.9<br>
+      <input type = 'radio' style='display: inline' value='4.9'>4.9<br>
+      <input type = 'radio' style='display: inline' value='3.9'>3.9<br>
+      <input type = 'radio' style='display: inline' value='9.9'>9.9<br>
+      </div>
+      
+      <div id=9>
+      <p> 9 percent of 40= </p></br>
+      <input type = 'radio' style='display: inline' value='12.6'>12.6<br>
+      <input type = 'radio' style='display: inline' value='2.6'>2.6<br>
+      <input type = 'radio' style='display: inline' value='3.6'>3.6<br>
+      <input type = 'radio' style='display: inline' value='1.6'>1.6<br>
+      </div>
+      
+
+</div>
+</div>
+<div id="message" style="background-color: aqua;"></div>
+
+<!-- <button onclick="getAns()"> test </button>  -->
+<!-- make sure to rename later on -->
+
+<script src="test.js"></script> 
+</html>
+
+<script>
+var allQs = document.getElementById("multiple-choice")
+ var allQsArr = allQs.querySelectorAll("div")
+ var quiz = document.getElementById("quiz")
+ var quizArr = quiz.querySelectorAll("div")
+ var abilities = document.getElementById("abilities");
+ var message = document.getElementById("message")
+
+showQuestion()
+ 
+
+</script>
