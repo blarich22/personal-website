@@ -16,16 +16,11 @@
 #     7-725-> discovered issues - is reading '/n'  
 #     8-855an - can input three words in array and find document
 #     925-930am - can add wildcards like '[]'
+#     930-955am - can generate file
+#     11-1125 - need to be able to read query from cmd
+#     2-230 
 
-fileRead = input()
-queryTerms = input()
-fileCreate = input()
 
-
-f = open('testReadFile2', "r")
-text2 = f.read()
-
-arr = []
 
 #  convert text into an array, each elt is an alnum word
 #  "I love the".....-> ["I", "love", "the"]
@@ -95,7 +90,9 @@ def getMatches(query, text):
 # remove unwanted characters from word
 # to do, create a "mode" button
 def removeErrors(word):
-    newWord = word.strip("\n")
+    # newWord = word.strip("\n")
+    newWord = word.split(';')
+
 
     return newWord
 
@@ -136,14 +133,52 @@ def createTypes():
 # print(dataArr)
 
 
-# def generateDataFile():
-#     f = open("genStatFile.txt", "w")
-#     for x in range(len(dataArr)):
-#         datastring = str(dataArr[x])
-#         f.write("\n" + datastring)
-#     f.close() 
+def generateDataFile():
+    f = open("genStatFile.txt", "w")
+    for x in range(len(dataArr)):
+        datastring = str(dataArr[x])
+        f.write("\n" + datastring)
+    f.close() 
 
-# generateDataFile()
 
+
+
+
+#11:30-12 managed to split the string
+#thought of ways to implement sublists
+def parseQuery(query):
+
+    queryArr = query.split(',')
+    for i in range(len(queryArr)):
+        if (queryArr[i] != ""):
+            containsSublist = ((queryArr[i][0] == '{') and (queryArr[i][len(queryArr[i])-1] == '}'))
+            # print((queryArr[i][0] == '{'),(queryArr[i][len(queryArr[i])-1] == '}'))
+            if (containsSublist == True):
+                queryArr[i] = queryArr[i].replace("{","").replace("}","")
+                # print(containsSublist, "contains sublist", queryArr[i])
+
+        queryArr[i] = queryArr[i].split()
+  
+    return queryArr
+
+
+# fileRead = input()
+fileRead = 'testReadFile3.txt'
+queryTerms = input()
+# fileCreate = input()
+
+    
+# print("query", removeErrors('["that"] ; ["this"]'))
+
+f = open(fileRead, "r")
+text2 = f.read()
 textArr = textToArr(text2)
-dataArr = getMatches([[], ['Lv.'], [], createTypes()], textArr)
+queryParsed = parseQuery(queryTerms)
+dataArr = getMatches(queryParsed, textArr)
+print(dataArr)
+
+
+# generateDataFile()}
+
+#  if (containsString):
+#     #     queryArr[0].strip('{}')
