@@ -1,0 +1,3 @@
+Generate the best collection of items from a given list!
+  i.e. GIVEN a list of items [pizza [cheese, animal], [ice cream [dairy, animal]].....],
+  Get best first x items, non-duplicable attributes
