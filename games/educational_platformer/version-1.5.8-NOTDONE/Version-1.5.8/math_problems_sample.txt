@@ -1,0 +1,83 @@
+
+<div id=0>
+<p> 30 percent of 70= </p></br>
+<input type = 'radio' style='display: inline' value='21.0'>21.0<br>
+<input type = 'radio' style='display: inline' value='26.0'>26.0<br>
+<input type = 'radio' style='display: inline' value='25.0'>25.0<br>
+<input type = 'radio' style='display: inline' value='27.0'>27.0<br>
+</div>
+
+<div id=1>
+<p> 30 percent of 40= </p></br>
+<input type = 'radio' style='display: inline' value='7.0'>7.0<br>
+<input type = 'radio' style='display: inline' value='8.0'>8.0<br>
+<input type = 'radio' style='display: inline' value='12.0'>12.0<br>
+<input type = 'radio' style='display: inline' value='3.0'>3.0<br>
+</div>
+
+<div id=2>
+<p> 10 percent of 40= </p></br>
+<input type = 'radio' style='display: inline' value='6.0'>6.0<br>
+<input type = 'radio' style='display: inline' value='0.0'>0.0<br>
+<input type = 'radio' style='display: inline' value='10.0'>10.0<br>
+<input type = 'radio' style='display: inline' value='4.0'>4.0<br>
+</div>
+
+<div id=3>
+<p> 10 percent of 50= </p></br>
+<input type = 'radio' style='display: inline' value='11.0'>11.0<br>
+<input type = 'radio' style='display: inline' value='4.0'>4.0<br>
+<input type = 'radio' style='display: inline' value='5.0'>5.0<br>
+<input type = 'radio' style='display: inline' value='6.0'>6.0<br>
+</div>
+
+<div id=4>
+<p> 80 percent of 70= </p></br>
+<input type = 'radio' style='display: inline' value='56.0'>56.0<br>
+<input type = 'radio' style='display: inline' value='51.0'>51.0<br>
+<input type = 'radio' style='display: inline' value='52.0'>52.0<br>
+<input type = 'radio' style='display: inline' value='48.0'>48.0<br>
+</div>
+
+<div id=5>
+<p> 30 percent of 90= </p></br>
+<input type = 'radio' style='display: inline' value='36.0'>36.0<br>
+<input type = 'radio' style='display: inline' value='27.0'>27.0<br>
+<input type = 'radio' style='display: inline' value='26.0'>26.0<br>
+<input type = 'radio' style='display: inline' value='21.0'>21.0<br>
+</div>
+
+<div id=6>
+<p> 30 percent of 70= </p></br>
+<input type = 'radio' style='display: inline' value='21.0'>21.0<br>
+<input type = 'radio' style='display: inline' value='27.0'>27.0<br>
+<input type = 'radio' style='display: inline' value='29.0'>29.0<br>
+<input type = 'radio' style='display: inline' value='16.0'>16.0<br>
+</div>
+
+<div id=7>
+<p> 3 percent of 80= </p></br>
+<input type = 'radio' style='display: inline' value='2.4'>2.4<br>
+<input type = 'radio' style='display: inline' value='0.3'>0.3<br>
+<input type = 'radio' style='display: inline' value='11.4'>11.4<br>
+<input type = 'radio' style='display: inline' value='3.4'>3.4<br>
+</div>
+
+<div id=8>
+<p> 10 percent of 20= </p></br>
+<input type = 'radio' style='display: inline' value='1.0'>1.0<br>
+<input type = 'radio' style='display: inline' value='3.0'>3.0<br>
+<input type = 'radio' style='display: inline' value='2.0'>2.0<br>
+<input type = 'radio' style='display: inline' value='10.0'>10.0<br>
+</div>
+
+<div id=9>
+<p> 20 percent of 20= </p></br>
+<input type = 'radio' style='display: inline' value='11.0'>11.0<br>
+<input type = 'radio' style='display: inline' value='4.0'>4.0<br>
+<input type = 'radio' style='display: inline' value='9.0'>9.0<br>
+<input type = 'radio' style='display: inline' value='1.0'>1.0<br>
+</div>
+
+
+ answer:0 : 21.0, 1 : 12.0, 2 : 4.0, 3 : 5.0, 4 : 56.0, 5 : 27.0, 6 : 21.0, 7 : 2.4, 8 : 2.0, 9 : 4.0, 

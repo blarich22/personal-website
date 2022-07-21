@@ -1,0 +1,203 @@
+
+
+<!-- spark22_mygame.html -->
+
+<!-- PART 1: HTML -->
+ 
+<!-- Hyper Text Markup Language -->
+
+<html> 
+    <body>
+
+        <!-- p: paragraph -->
+        <p>Welcome to my first 2d plaformer</p>
+        
+        <!-- button: clickable icons -->
+        <button id="lvl1" onclick="startGame1(1)"> LEVEL 1: First </button>
+        <!-- TO DO: Create a new button; Should say "LEVEL 2:  -->
+        <button id="lvl1" onclick="startGame1(2)"> LEVEL 2: First </button>
+
+        <!-- Challenge -->
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- PART 2: JAVASCRIPT -->
+
+<script> 
+
+//////////////////////////////variables
+
+//ints
+screenW = 400; //width of the game stage
+screenH = 400; //height of the game stage
+
+//strings
+
+
+//arrays
+
+//gameObjects 
+objects = {}
+
+
+
+
+////////////////////////////////////Quiz
+
+// WHICH OF THE FOLLOWING IS FALSE?
+// a. variables allow you to rewrite exp
+// b. num = 5 can be a variable
+// c. "buzz" can a variable
+// d. variables can be strings, ints, and arrays
+//////////////////////////////////////////////
+
+
+
+
+
+//////////////////////////Objects
+
+//all of the objects you need in the game
+ground = {x:  3, y: 200, clr: "brown", w: screenW, h: 200 } //ground
+medTree = {}; //medium tree to code
+protagonistArg = {x:  3, y: 170, clr: "brown", w: 30, h: 30 } //ground}
+
+
+
+////////////////////////////////////////JAVASCRIPT OBJECT
+
+//Where the stage is drawn/erased.
+
+var myGameArea = {
+
+  canvas: document.createElement("canvas"), //this code draws the stage\
+
+  start : function() { //takes the above canvas elt and adds attributes
+    this.canvas.width = screenW;
+    this.canvas.height = screenH;   
+
+    document.body.insertBefore(this.canvas, document.body.childNodes[0]); //ensures that stage appears above body
+    this.game = setInterval(updateGameArea, 2); //frame rate  
+    this.context = this.canvas.getContext("2d")
+  },
+
+
+  reset : function() { //this code resets the stage
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+  }
+
+} 
+
+
+///////////////////////Conditionals PT1
+////Switch/Case
+
+function startGame1(level) { 
+  
+    //before starting a new level, first end the first one
+    //if this is the first one, nothing....
+    clearInterval(myGameArea.game);
+
+
+
+    //switch statement
+    //look at the value of level
+  //depending on that value, goes to that part
+  switch (level) {
+      
+      //if on level 1
+      //TO DO: PUT FILL WITH YOUR OWN OBJECTS
+      case 1: 
+        objects = { 
+          ground: new object(ground),
+          protagonist: new Protagonist(protagonistArg),
+        }
+    break;
+    
+    //Level 2
+    case 2: 
+    objects = { 
+        ground : new object(ground),
+    }
+    break;
+    
+    //if no case matcges
+    default:
+        break;
+    }
+    
+    
+    myGameArea.start();
+    
+}
+  
+
+
+
+
+
+
+/////////////////////////////////////////////Conditionals PT2
+////If-then
+
+
+
+  function updateGameArea() {
+
+
+
+  //Erase and redraw 
+  myGameArea.reset();
+      
+    //redraw all gameObjects 
+    for (let i in objects ) { 
+        objects[i].redraw();
+    }
+    
+    //redraw protagonist
+    objects.protagonist.animate();
+    
+    //add CONS
+    
+    
+    //EXAMPLE OF IF_THEN STATEMENTS
+
+    
+    //If this statement is true, then what?
+
+        // if (p.x > 50) { 
+        //   output = document.createElement("p")
+        //   output.innerHTML = "200";
+        //   document.body.appendChild(output);
+        //   clearInterval(myGameArea.game)
+        // }
+    
+    //WIN CONDITION: TO DO
+
+    p = objects.protagonist; //you
+    
+  }
+
+  
+  
+</script>
+
+
+
+
+<!-- Github 13 > up : like google docs -->
+
+<script src="https://arichards131.github.io/personal-website/games/educational_platformer/Version-1/math_platformer_character.js"></script>
