@@ -1,0 +1,10 @@
+<html>
+    <div id="main">
+        <p> Test</p>
+    </div>
+</html>
+
+<script>
+    main = document.getElementById("main")
+    
+</script>

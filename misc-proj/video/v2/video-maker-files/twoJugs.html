@@ -1,0 +1,132 @@
+<html>
+
+    <body>
+
+
+        <div id="jug1" style="display:inline-block">
+    
+            <div id="contents" >
+                <br>
+            </div>
+        </div>
+
+
+        <div id="jug2" style="display:inline-block"> 
+            <div id="contens"  >
+                <br>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        
+        <form id="form1" style = "position:absolute; display: inline-block; left: 0px "> 
+        <input id="input1" type="text" class="txt" value ="0"></input>
+         <!-- <input id="input2" type="text" class="txt"></input>  -->
+        </form>
+
+        <form id="form2" style = "position:absolute; display: inline-block; left: 180px"> 
+            <input id="input2" type="text" value="0"></input>
+             <!-- <input id="input2" type="text" class="txt"></input>  -->
+            </form>
+        <!-- <-- <input id="input1" type="submit" value="Submit"></input> --> -->
+        <!-- <input id="input2"></input> -->
+
+    </body>
+
+</html>
+
+<script>
+jug1 = document.getElementById("jug1")
+jug1.style.position = "absolute"
+jug1.style.width = "12%"
+jug1.style.height = "50"
+jug1.style.border= "2px solid black"
+jug1.style.marginTop = "150px"
+
+//contents of jug 1
+jug1.children[0].style.backgroundColor  = "orange"
+jug1.children[0].style.height  = "0px"
+jug1.children[0].style.marginTop = "100px"
+
+///////////////////////////////////////////////////////////
+jug2 = document.getElementById("jug2")
+
+jug2.style.position = "absolute"
+
+jug2.style.marginLeft = "120px"
+jug2.style.width = "12%"
+jug2.style.height = "90"
+jug2.style.border= "2px solid black"
+jug2.style.marginTop = "110px"
+// jug2.style.display = "inline-block"
+
+//contents of jug 2
+jug2.children[0].style.backgroundColor  = "orange"
+jug2.children[0].style.height  = "0px"
+
+jug2.children[0].style.marginTop = "60px"
+
+
+//////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+form1 = document.getElementById("form1")
+form2 = document.getElementById("form2")
+
+form1.onsubmit = function(event) {
+     event.preventDefault()
+    console.log(form2.children[0])
+    jug1.children[0].style.marginTop = 50 - form1.children[0].value
+    jug1.children[0].style.height = form1.children[0].value
+
+    jug2.children[0].style.marginTop = 90 - form2.children[0].value//
+    jug2.children[0].style.height = form2.children[0].value
+
+   // event.preventDefault()
+
+
+}
+
+
+form2.onsubmit = function(event) {
+     event.preventDefault()
+    console.log(form2.children[0])
+    jug2.children[0].style.marginTop = 90 - form2.children[0].value//
+    jug2.children[0].style.height = form2.children[0].value
+
+   // event.preventDefault()
+
+
+}
+
+
+// form1[0].onsubmit = function(event) {
+//     event.preventDefault()
+//     console.log(form1.children[0].value)
+//     jug1.children[0].style.marginTop = 50 - form1.children[0].value
+//     jug1.children[0].style.height = form1.children[0].value
+
+//     // jug2.children[1].style.marginTop = 90 - form1.children[1].value//
+//     // jug2.children[1].style.height = form1.children[1].value
+
+
+// }
+
+
+
+
+//6/18 1235pm created a few drawing objects
+</script>

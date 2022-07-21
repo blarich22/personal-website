@@ -1,0 +1,666 @@
+<html>
+
+
+
+<style>
+#main.fadein {
+    opacity: 1;
+} 
+</style>
+    <div id="background">
+
+<!-- 
+        <label for="name">Name (4 to 8 characters):</label>
+
+        <input type="text" id="name" name="name" required
+            minlength="4" maxlength="8" size="10"> -->
+
+
+        
+        
+        <h1 id="title"> </h1>
+
+    
+        <div id="main" class="fadein">
+            <p></p>
+        </div>
+        
+        <div >
+            <img id ="img1" > 
+
+            <img id = "img2" > 
+
+            <img id = "img3" > 
+
+            <img id = "img4" > 
+        </div>
+
+    </div> 
+
+<script src="video-maker-temp.js"></script>
+
+<script> 
+//Math Olympiad 528
+// elements = {
+        
+//         title : 'Math Olympiad: <br> Practice Problem <br> Proof 5/27',
+//         bgrdColor : "lightblue",
+//         heightArr : [275,350,450],
+//         leftPosition : 20,
+//         imageSrc : "video images/math-olympiad/math-olympiad-ussr.png",
+//         textArr : ['Check here for the answer', 
+//         'Simplify the expression: n(n-1)(n+1)', 
+//         'Reorder: (n-1)n(n+1); <br> the expression is <br> made up of consecutive numbers',
+//         'The number three will divide <br>at least a number <br> in a consecutive list of three',
+//         'i.e. 15,16,17.....1,2,3......40,41,42',
+//         'This is a property usuable when one <br> has consecutive numbers'],
+//         rightBord : 380,
+//         leftBord : 20,
+//         textSpeed : 1
+//     }
+
+
+//  elements = {
+        
+//         title : 'Type Rankings: <br> Pokemon BW <br> Which ones are dominant <br> in game?',
+//         bgrdColor : "lightyellow",
+//         heightArr : [275],
+//         leftPosition : 150,
+//         imageSrc : "video images/function - skewedright.png",
+//         imageWidth: 45,
+//         textArr : ['Is it Normal types? Dark?', 
+//         'Calculable taking into account: <br> 1. # of occurrences per type, <br> 2. The levels of each type', 
+//         'For each type -> <br> found trainer levels -> <br> put each in a function (images)',
+//         'Function heavily accounts for  <br> levels 20-40 <br> see the left',
+//         'all outputs, f(level), <br> were summed',
+//         'result = result * <br> # of that type in game <br> / <br> # trainer Pokemon ',
+//         'finally, result divided <br> by the highest <br> "ranking score" possible',
+//         'Here are the results:',
+//         'RECAP'],
+//         rightBord : 300,
+//         leftBord : 150,
+//         textSpeed : 0.25,
+//         insertImage: [7, "video images/Type-Ranking-Calculations"]
+//     }
+
+//     // additional elements
+
+//     img2 = document.getElementById("img2")
+//     img2.src = "video images/formula - skewedright.png"
+//     // img2.style.border 
+//     img2.style.display = "inline"
+//     // img2.style.marginBottom = 260
+//     // img2.style.borderBottom = 0
+//     // img2.style.paddingBottom = 0
+
+//     img3 = document.getElementById("img3")
+//     img3.src = "video images/Type-Ranking.png"
+//     img3.style.display = "inline"
+   
+//     img3.style.marginLeft = 270
+//     img3.style.marginBottom = 160
+
+//     img4 = document.getElementById("img4")
+//     img4.src = "video images/Type-Ranking-Calculations.png"
+//     img4.style.display = "inline"
+   
+//     img4.style.marginLeft = 0
+//     img4.style.marginBottom = 160
+//     img4.style.width = "50%"
+
+
+    ////////////////////////////////////////////////////////5/29
+
+    //8am - found question for CS
+    //9am - make sure to make next video at 75%
+
+    // elements = {
+        
+    //     title : 'Computer Science AP: <br> Practice Problem <br> mystery function 5/30',
+    //     bgrdColor : "lightyellow",
+    //     heightArr : [400],
+    //     leftPosition : 20,
+    //     imageWidth : 80,
+    //     imageSrc : "video images/apcsexam-2018bowl-14.png",
+    //     textArr : [['Check here for the answer'], 
+    //     ['soprint(x%10)<br> <br> soprint(4321 % 10 = 1) <br><br> **modulo (%): returns remainder'], 
+    //     ['((x/10) != 0) == TRUE <br> mystery(x/10) -> mystery(432) is called'],
+    //     ['**Called Recursion: <br><br> calls to the func <br><br> inside same func'],
+    //     ['If repeated, 12 is printed <br> there is a pattern....'],
+    //     ['which choice corresponds <br> to that code? -- choice B']],
+    //     rightBord : 450,
+    //     leftBord : 20,
+    //     textSpeed : 0.25
+    // }
+
+//////////////////////////////////////////////////////////////
+//9am - make sure to make next video at 75%
+
+
+    ////////////////////////////////////////////////////////6/09
+
+    //8am - found question for CS
+    //9am - make sure to make next video at 75%
+
+    // elements = {
+        
+    //     title : 'Maximize Offensive and Defensive <br>Type Combinations: Pokemon',
+    //     bgrdColor : "lightyellow",
+    //     heightArr : [400],
+    //     leftPosition : 10,
+    //     imageWidth : 100,
+    //     imageSrc : "video images/type-combination-rankings.png",
+    //     textArr : [['Combinations with high <br> type advantage <br> and resistances'], 
+    //     [' 16 = <br> num type adv. + <br> num resistances / 2 '], 
+    //     [' Top are actual combinations <br> Bottom: rare/non-existant '],
+    //     ['**Excluded combos: <br> repeating types'],
+    //     ['Exist at least dozens combos <br> with average of 16']],
+    //     rightBord : 460,
+    //     leftBord : 10,
+    //     textSpeed : 0.25
+    // }
+
+/////////////////////////////////////////////////////////6/10
+             
+    // elements = {
+        
+    //     title : 'Math Olympiad 6/10 <br> Practice Problem <br> digits',
+    //     bgrdColor : "lightyellow",
+    //     heightArr : [200],
+    //     leftPosition : 10,
+    //     imageWidth : 100,
+    //     imageSrc : "video images/math-olympiad101problems-2-6c.png",
+    //     textArr :
+    //     [['Check Here for Answer'], 
+    //     ['= 5/8 <br> = 1/8 (.125) * 5 <br>= .625'], 
+    //     [' (0.625^5) -> <br> 5 is last digit <br> <br> Proof 5^5 = 625 -> <br> ends in 5 '],
+    //     [' Rule: For n, a natural number, <p> n^5 has a final digit of 5']],
+    //     rightBord : 460,
+    //     leftBord : 10,
+    //     textSpeed : 0.25
+    // }
+
+    
+/////////////////////////////////////////////////////////6/10
+             
+// elements = {
+        
+//         title : 'Process of Buying Shares (pt1)',
+//         bgrdColor : "orange",
+//         heightArr : [200],
+//         leftPosition : 200,
+//         imageWidth : 100,
+//         imageSrc : "video images/investopedia-meow-quote.png",
+//         textArr :
+//         [['Various Buying Methods: <br> - Market Buy <Br> - Limit Buy'], 
+//         ['Market Buy: <br> Buy at current price ($150) <br> Quick, but Risky'], 
+//         ['152 - 150 = loss of $2 <br> assuming bid price: 152 '],
+//         ['Safe: Limit Orders:  <br> Buy or Sell at <br> $X or better'],
+//         ['I.e. Buy Appl WHEN <br> price < or = 150 <br> drawback: takes longer']],
+            //         rightBord : 27
+//         leftBord : 200,
+//         textSpeed : 0.25
+//     }
+
+
+    // synth = window.speechSynthesis;
+    //      console.log(synth.getVoices())
+    //     // synth.Rate = -2
+        
+    //         const utterThis = new SpeechSynthesisUtterance("test 1 2 3");
+    //         utterThis.voice = synth.getVoices()[4];
+    //         synth.speak(utterThis);
+            
+    
+
+/////////////////////////////////////////////////////////6/10
+             
+// elements = {
+        
+//         title : 'Math Olympiad 6/16 <br> Practice Problem <br> digits',
+//         bgrdColor : "lightBLUE",
+//         heightArr : [300],
+//         leftPosition : 10,
+//         imageWidth : 100,
+//         imageSrc : "video images/math-olympiad-num-theory-pg2ex1.2ab.png",
+//         textArr :
+//         [['Check Here for Answer'], 
+//         ['Assumptions: <br> - 1^n is even <br> - the sum of two odds is even'], 
+//         ['Informal Proof: <br> 2^n / 2 = <br> 2^(n-1) = <br> 2^(n-1) -1 + 2^(n+1) + 1'],
+//         [' 2^(n-1) -1  & <br> 2^(n-1) + 1 <br> are odd'],
+//         ['3^n = <br> 3 * 3^(n-1) = <br> 3^(n-1)+(3^(n-1)-1)+(3^n+1)' ]],
+//         rightBord : 460,
+//         leftBord : 10,
+//         textSpeed : 0.25
+//     }
+
+//////////////////////////////////////////
+
+// elements = {
+        
+//         title : 'Educational Finance 7/11 <br>  ',
+//         bgrdColor : "lightBLUE",
+//         heightArr : [300],
+//         leftPosition : 10,
+//         imageWidth : 200,
+//         imageSrc : "video images/investmentclipart11.jpg",
+//         textArr :
+//         [['"As an adult, how do I start investing?" <br>'], 
+//         ['Assumptions: <br> Investing is hard work. <br> Investing requires large funds. <br> Investing is risky.'], 
+//         ['1) Investing is hard work. <br> Money can be invested through a broker. <br> Investing can be done online Independently.'],
+//         ['2) Investing requires large funds. <br> Stocks can be brough fractionally. <br> X owns 0.1 shares of apple (about 15) '],
+//         ['3) Investing is risky. <br> Risk mitigation occurs through diversification. <br> Furthur, by trading in set time intervals' ]],
+//         rightBord : 700,
+//         leftBord : 10,
+//         textSpeed : 0.25
+//     }
+
+
+
+//////////////////////////////////////////
+
+// elements = {
+        
+//         title : 'Educational Finance 7/14 <br>  ',
+//         bgrdColor : "lightBLUE",
+//         heightArr : [300],
+//         leftPosition : 10,
+//         imageWidth : 200,
+//         imageSrc : "video images/investmentclipart11.jpg",
+//         textArr :
+//         [['What is the best way to prepare for a recession?" <br>'], 
+//         ['Recession: <br> -Lower economic activity. <br> -Alternates with periods of economic productivity.'],
+//         ['<br> Recessions can be short/long. <br> -timing is uncertain. <br> -can (briefly) disappear with govt intervention.'],
+//         ['Preparation. <br> 1. gradual withdrawal <br> 2. diversification <br> 3. news'], 
+//         ['1) Gradual Withdrawal. <br> - withdrawal from banks or market. <br> - prevents losing from a sudden price increase.'],
+//         ['2) Diversifications. <br> -bonds and other assets. (gold) <br> -may be more stable in price than stocks. '],
+//         ['3) Finance News. <br> -Interest Rates Down. -> Price Up <br> -The opposite is true.' ]],
+//         rightBord : 550,
+//         leftBord : 10,
+//         textSpeed : 0.25
+//     }
+
+/////////////////////////////////////////////////////////////NOT DONE
+////////////////////////////////////////////////////////////
+
+    elements = {
+        
+        title : 'From $50 to 500k in x years 7/20 <br>  ',
+        bgrdColor : "lightBLUE",
+        heightArr : [300],
+        leftPosition : 10,
+        imageWidth : 200,
+        imageSrc : "video images/investmentclipart11.jpg",
+        imageArr : ["video images/FinancialGrowth1.jpg", "video images/FinancialGrowth2.jpg",
+        "video images/2.jpg", "video images/3.png", "video images/3.png", "video images/3.png",
+        "video images/4.png", "video images/4.png", "video images/4.png"],
+        textArr :
+        [['* $50 to 1 million... <br><br> *a possible timeline <br><br> *via "Compound Investing"',
+        'Compound Investing. <br><br> 1. Continual investment using earnings. <br><br> i.e. 75% profit is reinvested', 
+        'Scenario. <br><br> 1. $200% return is achieved. <br><br> 2. $50 is the initial investment.',
+        'Year 1: $50. <br><br> Year 2: $100. <br><br> Year 3: $200...',
+        'Mathematical Formula: 50 2^x = 1,000,000 ',
+        'x = 14 through 15 years',
+        '*Assumptions <br><br> 1. Returns are 200% every year. <br><br> 2. Relatively stable price growth. <br><br> 3. Experienced in Management Multiple Investments.',
+        'Key factor. <br><br> Mitigating risk.'],
+        [12000, 12000, 10000, 10000, 8000, 6000, 12000, 12000, 24000]
+    
+    ],
+        rightBord : 400,
+        leftBord : 10,
+        textSpeed : 0.25
+    }
+
+    
+
+            //7.17 - edited 4:15
+            //5.25pm add images for doublng, and year 1 ,2 3, check x^2, 
+            
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+// elements = {
+        
+//         title : 'From $50 to 500k in x years 7/15 <br>  ',
+//         bgrdColor : "lightBLUE",
+//         heightArr : [300],
+//         leftPosition : 10,
+//         imageWidth : 200,
+//         imageSrc : "video images/investmentclipart11.jpg",
+//         imageArr : ["video images/FinancialGrowth1.jpg", "video images/FinancialGrowth2.jpg",
+//         "video images/FinancialGrowth2.jpg", "video images/FinancialGrowth2.jpg",
+//         "video images/FinancialGrowth2.jpg", "video images/FinancialGrowth2.jpg",
+//         "video images/FinancialGrowth2.jpg",
+//         "video images/FinancialGrowth3.jpg"],
+//         textArr :
+//         [['* $50 can growth to 1 million. <br> *The technique used is <br> "Compound Investing"'],
+//         ['Compound Investing. <br> - Continual investing using earnings <br> i.e. 100% profit reinvested'], 
+//         ['Scenario. <br>-investments are doubled ever year. <br> -$50 is the initial investment.'],
+//         ['Year 1: $50. <br> Year 2: $100. <br> Year 3: $200...'],
+//         ['Mathematical Formula: 50 2^x = 1,000,000 '],
+//         ['x = 21, 22 years'],
+//         ['*Assumptions <br> 1. Returns are 200% every year <br> 2. Relatively stable price growth <br> 3. Experienced in Management Multiple Investments']
+//     ],
+//         rightBord : 400,
+//         leftBord : 10,
+//         textSpeed : 0.25
+//     }
+
+//9:55am - text modifications 7/21
+
+
+//////////////////////////////////////////////////////////
+
+img1 = generateImg(null)
+img2 = null
+img3 = null
+
+ elements = {
+        
+         title : 'AP CS Bowl 2018 - Practice   7/21 <br>  ',
+         bgrdColor : "lightBLUE",
+         heightArr : [300],
+         leftPosition : 10,
+         imageWidth : 400,
+         image: [img1, img2, img3],
+        //  image1 : { sequenceArr: ["video images/APCS/doublearrays-721/1.1.png"]},
+         image2 : { sequenceArr: ['', 'video images/APCS/doublearrays-721/1.2.png']},
+         image3 : [["", '', ''],[10000, 10000]],
+         textArr : [["Intro","2 "], [12000]],
+         rightBord : 460,
+         leftBord : 10,
+         textSpeed : 0.25
+     }
+
+
+
+
+function generateImg(arr) {
+    let img = document.getElementById("img1")
+    img.style.textAlign = "center"
+    // img.style.left = 290
+    // img.style.top = 100
+    img.style.position = "absolute"
+    img.style.width = 400
+    //NO LONGER USED!!!!!NOTE
+    img.src = 'video images/APCS/doublearrays-721/1.1.png'
+    // img.style.display = "inline"
+    img.style.display = "none"
+    let sequenceArr = [[2000, 2000], [4000, 4000]] //[when, how long to appear]
+
+    return {img, sequenceArr}
+
+}
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+
+
+
+    // let synth = window.speechSynthesis;
+
+    
+    //   let utterance = new SpeechSynthesisUtterance("Hello world!");
+
+
+
+    //   voices = SpeechSynthesis.getVoices();
+
+
+    
+    //         setTimeout(() => {console.log(voices)
+    //             utterance.voice = voices
+    
+    //         synth.speak(utterance);
+                
+    //         }, 10000);
+
+    // let synth = window.speechSynthesis;
+
+    // function populateVoiceList() {
+    //     voices = synth.getVoices();
+
+        // for(i = 0; i < voices.length ; i++) {
+            // const option = document.createElement('option');
+            // option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+            // if(voices[i].default) {
+            // option.textContent += ' -- DEFAULT';
+            // }
+
+            // option.setAttribute('data-lang', voices[i].lang);
+            // option.setAttribute('data-name', voices[i].name);
+            // voiceSelect.appendChild(option);
+        // }
+
+        // main.addEventListener('onpageshow', function(event) {
+        // // event.preventDefault();
+        // // console.log(event)
+        // // console.log(main.innerHTML)
+        // console.log("test")
+        
+
+        // // const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+        // // const selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
+        // // for(i = 0; i < voices.length ; i++) {
+        // //     if(voices[i].name === selectedOption) {
+        // //     utterThis.voice = voices[i];
+        // //     }
+        // // }
+        // // utterThis.pitch = pitch.value;
+        // // utterThis.rate = rate.value;
+        // // synth.speak(utterThis);
+
+
+// })
+
+
+
+//6/11 4:25am: reseached speech methods
+//6/11 4:55am: more research, will transition to other js
+//6/11 5:25am: ""
+///6/12 6-625am: works but asychronous, loading issues
+
+//6.18  3:55am: copy and pasted example code: works just fine
+//6/18 4-4254am: copied code into video make
+
+// Ranking of Each Type (variation 1) 
+// #1. Normal ; 0.60
+// #2. Water ; 0.51
+// #3. Grass ; 0.21
+// #4. Fighting ; 0.17
+// #5. Psychic ; 0.15
+// #6. Fire ; 0.10
+// #7. Dark ; 0.09
+                //   let synth = window.speechSynthesis;
+                //     const utterThis = new SpeechSynthesisUtterance("test 1 2 3");
+                //     console.log(utterThis)
+                    
+                    
+//  function getSound() {
+  
+//                    englishVoice = {voiceURI: 'Google US English', name: 'Google US English', lang: 'en-US', localService: false, default: false}
+//                    utterThis.voice = synth.getVoices()[4]
+//                    utterThis.volume = 5
+//                    console.log(synth.getVoices()[4], utterThis)
+//                    synth.speak(utterThis);
+//  }
+//                      setTimeout(getSound, 5000)
+
+
+
+
+       generateVideo(elements)
+</script>
+
+<html>
+
+    <body>
+
+
+        <div id="jug1" style="display:inline-block">
+    
+            <div id="contents" >
+                <br>
+            </div>
+        </div>
+
+
+        <div id="jug2" style="display:inline-block"> 
+            <div id="contens"  >
+                <br>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        
+        <form id="form1" style = "position:absolute; display: inline-block; left: 0px "> 
+        <input id="input1" type="text" class="txt" value ="0"></input>
+         <!-- <input id="input2" type="text" class="txt"></input>  -->
+        </form>
+
+        <form id="form2" style = "position:absolute; display: inline-block; left: 180px"> 
+            <input id="input2" type="text" value="0"></input>
+             <!-- <input id="input2" type="text" class="txt"></input>  -->
+            </form>
+        <!-- <-- <input id="input1" type="submit" value="Submit"></input> --> -->
+        <!-- <input id="input2"></input> -->
+
+    </body>
+
+</html>
+<!-- 
+<script>
+jug1 = document.getElementById("jug1")
+jug1.style.position = "absolute"
+jug1.style.width = "12%"
+jug1.style.height = "50"
+jug1.style.border= "2px solid black"
+jug1.style.marginTop = "150px"
+
+//contents of jug 1
+jug1.children[0].style.backgroundColor  = "orange"
+jug1.children[0].style.height  = "0px"
+jug1.children[0].style.marginTop = "100px"
+
+///////////////////////////////////////////////////////////
+jug2 = document.getElementById("jug2")
+
+jug2.style.position = "absolute"
+
+jug2.style.marginLeft = "120px"
+jug2.style.width = "12%"
+jug2.style.height = "90"
+jug2.style.border= "2px solid black"
+jug2.style.marginTop = "110px"
+// jug2.style.display = "inline-block"
+
+//contents of jug 2
+jug2.children[0].style.backgroundColor  = "orange"
+jug2.children[0].style.height  = "0px"
+
+jug2.children[0].style.marginTop = "60px"
+
+
+//////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+form1 = document.getElementById("form1")
+form2 = document.getElementById("form2")
+
+form1.onsubmit = function(event) {
+     event.preventDefault()
+    console.log(form2.children[0])
+    jug1.children[0].style.marginTop = 50 - form1.children[0].value
+    jug1.children[0].style.height = form1.children[0].value
+
+    jug2.children[0].style.marginTop = 90 - form2.children[0].value//
+    jug2.children[0].style.height = form2.children[0].value
+
+   // event.preventDefault()
+
+
+}
+
+
+form2.onsubmit = function(event) {
+     event.preventDefault()
+    console.log(form2.children[0])
+    // jug2.children[0].style.marginTop = 90 - form2.children[0].value//
+    // jug2.children[0].style.height = form2.children[0].value
+    jug2.children[0].style.marginTop = 40
+    jug2.children[0].style.height = 20
+
+   // event.preventDefault()
+ -->
+
+}
+
+
+<!-- // form1[0].onsubmit = function(event) {
+//     event.preventDefault()
+//     console.log(form1.children[0].value)
+//     jug1.children[0].style.marginTop = 50 - form1.children[0].value
+//     jug1.children[0].style.height = form1.children[0].value
+
+//     // jug2.children[1].style.marginTop = 90 - form1.children[1].value//
+//     // jug2.children[1].style.height = form1.children[1].value
+
+
+// }
+
+
+
+
+//6/18 1235pm created a few drawing objects
+</script> -->
+
+<!-- 5/25 12:33: made time rotator -->
+<!-- 5/25 4; worked on animating text -->
+
+<!-- 5/26:12:25 can animate text
+    1-1;00pm text does not wrap
+    4L25pm texts moves back and forth
+    5/27: 125 - added sample text--> 
+          <!-- 155 uploaded demo
+    5/28 125 began to add object, to hold variable elements
+    5/29 4:43am - began to create template format 
+    5/29 500 - 5531 - began new sshor
+    5/29 - 6 - wrote text 
+    5/30 - researched image bordering
+
+    6/09 - cannot center elt???

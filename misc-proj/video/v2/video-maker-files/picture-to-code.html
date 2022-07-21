@@ -1,0 +1,95 @@
+<style>
+    #main {
+        border: 2px solid black;
+    }
+
+    #table {
+        position: relative
+    }
+
+    #table.blue {
+        background-color: blue;
+    }
+</style>
+
+
+<html>
+<body>
+
+    <table id = "table" style='position: absolute'>
+        <tr id = "table" class = "blue" style="background-color: blue;">
+            <th style="background-color: blue; border: 1px solid black">Blue</th>
+        </tr>
+        <tr id = "table" class = "red" style="background-color: red;">
+            <th style="background-color: red; border: 1px solid black">Red</th>
+        </tr>
+
+        <tr id = "table" class = "yellow" style="background-color: yellow;">
+            <th style="background-color: yellow; border: 1px solid black">Yellow</th>
+        </tr>    
+    </table>
+
+    <div id="main" style="width: 600px; height: 600px; position: absolute"></div>
+</body>
+</html>
+
+<script>
+
+    element = null
+    elementName = "div"
+    elementClr = "red"
+    mousedown = false
+
+    blue = document.getElementsByClassName('blue')
+    table = document.getElementById('table')
+    table.style.marginTop = '0px'
+    blue.onclick = function() {
+        elementClr = 'blue'
+    }
+
+    main = document.getElementById('main')
+    main.style.marginLeft = '70px'
+    main.style.marginTop = '90px'
+
+    
+    function setPosition() {
+        element.style.position = "absolute"
+        element.style.marginLeft = event.clientX - 100
+        element.style.marginTop = event.clientY - 110
+       
+    }
+
+    function createObject(elt) {
+        element = document.createElement(elementName)
+        element.style.backgroundColor = elementClr
+        width = element.style.width = '50px'
+        width = element.style.height = '50px'
+    }
+
+    function draw() {
+        createObject()
+        setPosition()
+        main.append(element)
+    }
+
+
+    //is it in the right are
+    function inArea()
+    main.onmousedown = function(event) {
+        draw()
+        mousedown = true
+    }
+
+    main.onmouseup = function() {mousedown = false}
+
+    // main.onmousemove = function() {
+    //     if (mousedown) {
+    //         draw()
+    //     }
+
+    // };
+
+
+//10am - can add color 7/17
+    
+</script>
